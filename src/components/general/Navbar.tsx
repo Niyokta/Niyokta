@@ -13,6 +13,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useAppDispatch } from "@/lib/reduxHooks";
 import { loadingstate } from "@/lib/features/userdetails";
+import { primary_background_color } from "@/resource/theme";
 export default function Navbar() {
     const dispatch=useAppDispatch();
     const {toast}=useToast();
@@ -33,7 +34,7 @@ export default function Navbar() {
     }
     
     return (
-            <div className="w-[100%] h-[60px] rounded-md flex justify-between px-[20px] items-center" style={{ boxShadow: "0.1px 0.1px 0.1px 1px #dee0e2",userSelect:'none' }}>
+            <div className="w-[100%] h-[60px] rounded-md flex justify-between px-[20px] items-center" style={{ boxShadow: "0.1px 0.1px 0.1px 1px #dee0e2",userSelect:'none',backgroundColor:primary_background_color }}>
                 <ul>
                     <li className="font-bold md:text-[25px]">Niyokta</li>
                 </ul>

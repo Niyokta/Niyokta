@@ -14,6 +14,7 @@ import { TbLoader3 } from "../general/reacticons";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast"
 import Link from "next/link";
+import { div_color, primary_accent_text, secondary_accent_text, text_color,input_label_color } from "@/resource/theme";
 
 type creds = {
     username: string,
@@ -61,24 +62,24 @@ export default function LoginBox() {
     return (
         loading ? (
             <div className="w-full h-screen flex items-center justify-center">
-                <Card className="w-[80%] md:w-[400px] h-[350px] flex items-center justify-center">
+                <Card className="w-[80%] md:w-[400px] h-[350px] flex items-center justify-center" style={{backgroundColor:div_color}}>
                     <TbLoader3 className="w-[50px] h-[50px] animate-spin" />
                 </Card>
             </div>
         ) : (
-            <div className="w-full h-screen flex items-center justify-center">
-                <Card className="w-[80%] md:w-[400px] h-[350px]">
+            <div className="w-full h-screen flex items-center justify-center ">
+                <Card className="w-[80%] md:w-[400px] h-[350px]" style={{backgroundColor:div_color,color:text_color}}>
                     <CardHeader>
-                        <CardTitle>Signin</CardTitle>
-                        <CardDescription>Enter credentials to signin</CardDescription>
+                        <CardTitle style={{color:primary_accent_text}}>Signin</CardTitle>
+                        <CardDescription >Enter credentials to signin</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p>Username</p>
+                        <p style={{color:input_label_color}}>Username</p>
                         <Input  onKeyDown={handleusernamekeydown} onChange={(e) => setusercreds((prev) => ({ ...prev, username: e.target.value }))} />
                     </CardContent>
                     <CardContent>
-                        <p>Password</p>
-                        <Input onKeyDown={handlekeydown} type='password' ref={passwordRef} onChange={(e) => setusercreds((prev) => ({ ...prev, password: e.target.value }))} />
+                        <p style={{color:input_label_color}}>Password</p>
+                        <Input onKeyDown={handlekeydown} type='password' ref={passwordRef} onChange={(e) => setusercreds((prev) => ({ ...prev, password: e.target.value }))}/>
                     </CardContent>
                     <CardFooter className="flex flex-col">
                         <Button variant="default"  className="mx-auto" onClick={handlesignin}>SignIn</Button>

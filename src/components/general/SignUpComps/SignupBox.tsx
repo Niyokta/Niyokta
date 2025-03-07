@@ -7,7 +7,7 @@ import { TbLoader3, CgChevronDoubleRight, CgChevronDoubleLeft, FaLinkedinIn, FaG
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast"
 import Link from "next/link";
-
+import { div_color,input_label_color,primary_accent_text,text_color } from "@/resource/theme";
 export default function SignupBox() {
     const { toast } = useToast();
     const router = useRouter()
@@ -63,35 +63,35 @@ export default function SignupBox() {
     return (
         loading ? (
             <div className="w-full h-screen flex items-center justify-center">
-                <Card className="w-[80%] md:w-[600px] h-[600px] flex items-center justify-center">
+                <Card className="w-[80%] md:w-[600px] h-[600px] flex items-center justify-center" style={{backgroundColor:div_color}}>
                     <TbLoader3 className="w-[50px] h-[50px] animate-spin" />
                 </Card>
             </div>
         ) : curr === 0 ? (
             <div className="w-full h-screen flex items-center justify-center">
-                <Card className="w-[80%] md:w-[600px] h-[600px]">
+                <Card className="w-[80%] md:w-[600px] h-[600px]" style={{backgroundColor:div_color,color:text_color}}>
                     <CardHeader>
-                        <CardTitle>Create Account</CardTitle>
+                        <CardTitle style={{color:primary_accent_text}}>Create Account</CardTitle>
                         <CardDescription>Enter credentials to create a new account</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p>Username</p>
+                        <p style={{color:input_label_color}}>Username</p>
                         <Input onKeyDown={handlekeydown} value={usercreds.username} onChange={(e) => setusercreds((prev) => ({ ...prev, username: e.target.value }))} />
                     </CardContent>
                     <CardContent>
-                        <p>Email ID</p>
+                        <p style={{color:input_label_color}}>Email ID</p>
                         <Input onKeyDown={handlekeydown} value={usercreds.email} onChange={(e) => setusercreds((prev) => ({ ...prev, email: e.target.value }))} />
                     </CardContent>
                     <CardContent>
-                        <p>Phone Number</p>
+                        <p style={{color:input_label_color}}>Phone Number</p>
                         <Input type="number" onKeyDown={handlekeydown} value={usercreds.phoneNumber} onChange={(e) => setusercreds((prev) => ({ ...prev, phoneNumber:e.target.value }))} />
                     </CardContent>
                     <CardContent>
-                        <p>Password</p>
+                        <p style={{color:input_label_color}}>Password</p>
                         <Input type='password' onKeyDown={handlekeydown} value={usercreds.password} onChange={(e) => setusercreds((prev) => ({ ...prev, password: e.target.value }))} />
                     </CardContent>
                     <CardContent>
-                        <p>Confirm Password</p>
+                        <p style={{color:input_label_color}}>Confirm Password</p>
                         <Input type='password' onKeyDown={handlekeydown} value={usercreds.cnfpassword} onChange={(e) => setusercreds((prev) => ({ ...prev, cnfpassword: e.target.value }))} />
                     </CardContent>
                     <CardFooter className="flex flex-col">
@@ -105,25 +105,25 @@ export default function SignupBox() {
         ) : (
             <div>
                 <div className="w-full h-screen flex items-center justify-center">
-                    <Card className="w-[80%] md:w-[600px] h-[650px]">
+                    <Card className="w-[80%] md:w-[600px] h-[650px]" style={{backgroundColor:div_color,color:text_color}}>
                         <CardHeader>
-                            <CardTitle>Create Account</CardTitle>
+                            <CardTitle style={{color:primary_accent_text}}>Create Account</CardTitle>
                             <CardDescription>Enter credentials to create a new account</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <p>D.O.B {`( DD-MM-YYYY )`}</p>
+                            <p style={{color:input_label_color}}>D.O.B {`( DD-MM-YYYY )`}</p>
                             <Input onKeyDown={handlekeydown} value={usercreds.birth_date} onChange={(e) => setusercreds((prev) => ({ ...prev, birth_date: e.target.value }))} />
                         </CardContent>
                         <CardContent>
-                            <p>Working Hours</p>
+                            <p style={{color:input_label_color}}>Working Hours</p>
                             <Input  onKeyDown={handlekeydown} value={usercreds.working_hour} onChange={(e) => setusercreds((prev) => ({ ...prev, working_hour: e.target.value }))} />
                         </CardContent>
                         <CardContent>
-                            <p>Country / Nationality</p>
+                            <p style={{color:input_label_color}}>Country / Nationality</p>
                             <Input onKeyDown={handlekeydown} value={usercreds.country} onChange={(e) => setusercreds((prev) => ({ ...prev, country: e.target.value }))} />
                         </CardContent>
                         <CardContent>
-                            <p>Social Links</p>
+                            <p style={{color:input_label_color}}>Social Links</p>
                             <div className="flex items-center justify-between pt-[20px]">
                                 <FaLinkedinIn className="w-[30px] h-[30px]" /><Input className="w-[90%]" value={socials.linkedin}  placeholder="LinkedIn" onKeyDown={handlekeydown} onChange={(e) => setsocials((prev) => ({ ...prev, linkedin: e.target.value }))} />
                             </div>
