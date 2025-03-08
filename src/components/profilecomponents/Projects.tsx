@@ -17,6 +17,7 @@ import {
     DialogClose
 } from "@/components/ui/dialog"
 import { useAppSelector } from "@/lib/reduxHooks";
+import { border_color, box_shadow, button_text, div_color, normal_button_bg, normal_hover_button_bg, text_color } from "@/resource/theme";
 export default function Projects() {
     const userid=useAppSelector(state=>state.user.userid)
     const clientname=useAppSelector(state=>state.user.userName)
@@ -67,7 +68,7 @@ export default function Projects() {
         })
     }
     return (
-        <div className="w-full min-h-[70px] mt-[20px] flex flex-col" style={{ boxShadow: "0.1px 0.1px 0.1px 1px #dee0e2" }}>
+        <div className="w-full min-h-[70px] mt-[20px] flex flex-col" style={{ boxShadow: box_shadow,backgroundColor:div_color }}>
             <div className="w-full h-[70px] flex items-center justify-between px-[20px]">
                 <p className="text-[20px] font-bold">Your Projects</p>
                 {!part ? <IoIosArrowDown className="w-[30px] h-[30px] cursor-pointer" onClick={
@@ -80,7 +81,7 @@ export default function Projects() {
                     }
                 } />}
             </div>
-            <div className="w-full  p-[20px]" style={{ display: part ? 'block' : 'none' }}>
+            <div className="w-full  p-[20px] border-t-[1px]" style={{ display: part ? 'block' : 'none',borderColor:border_color }}>
                 {
                     projects.length === 0 ? (
                         <div className="w-full h-[100px] flex items-center justify-center text-[30px] font-bold">
@@ -89,14 +90,14 @@ export default function Projects() {
                     ) : (
                         projects.map((project, index) => {
                             return (
-                                <div className="w-[100%] h-[100px] hover:bg-[#f7f7f7] flex items-center p-[20px]" key={index}>
+                                <div className="w-[100%] h-[70px] flex items-center px-[20px] rounded-md border-[1px] mt-[10px]" key={index} style={{borderColor:border_color}}>
                                     <div className="w-[90%]">
                                         <p className="text-[15px] font-light">{project.title.length > 150?project.title.slice(0,150)+" .....":project.title}</p>
                                         <p className="text-[13px] font-light">{project.created_at.slice(0,10)} | Rs. {project.min_budget} - Rs. {project.max_budget}</p>
                                     </div>
                                     <Dialog>
                                         <DialogTrigger className=""><MdDelete className="w-[20px] h-[20px] hover:animate-ping" style={{ color: '838383' }} /></DialogTrigger>
-                                        <DialogContent className="bg-white w-[500px]">
+                                        <DialogContent className="w-[500px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
                                             <DialogHeader>
                                                 <DialogTitle>Remove Project</DialogTitle>
                                                 <DialogDescription className="h-[150px] flex flex-col ">
@@ -121,8 +122,8 @@ export default function Projects() {
                     )
                 }
                 <Dialog>
-                    <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className="w-[150px] h-[100%] shadow-sm shadow-[#b2b2b2] justify-center"><p className="mx-auto pt-[8px] font-medium">Add New Project</p></div></DialogTrigger>
-                    <DialogContent className="bg-white w-[450px] md:w-[900px]">
+                    <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className={`w-[150px] h-[100%] justify-center rounded-md bg-[${normal_button_bg}] hover:bg-[${normal_hover_button_bg}]`} style={{color:button_text}}><p className="mx-auto pt-[8px] font-medium">Add New Project</p></div></DialogTrigger>
+                    <DialogContent className="w-[450px] md:w-[900px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
                         <DialogHeader>
                             <DialogTitle>Host a New Project</DialogTitle>
                             <DialogDescription className="h-[700px] flex flex-col">

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "../ui/button";
 import { useAppSelector,useAppDispatch } from "@/lib/reduxHooks";
+import { border_color, box_shadow, div_color, normal_button_bg, normal_hover_button_bg, text_color } from "@/resource/theme";
 
 export default function Experience() {
     const dispatch=useAppDispatch();
@@ -69,7 +70,7 @@ export default function Experience() {
     }
 
     return (
-        <div className="w-full min-h-[70px] max-h-[1200px] mt-[20px] flex flex-col" style={{ boxShadow: "0.1px 0.1px 0.1px 1px #dee0e2", userSelect: 'none' }}>
+        <div className="w-full min-h-[70px] max-h-[1200px] mt-[20px] flex flex-col" style={{ boxShadow: box_shadow, userSelect: 'none',backgroundColor:div_color }}>
             <div className="w-full h-[70px] flex items-center justify-between px-[20px]">
                 <p className="text-[20px] font-bold">Experience</p>
                 {!part ? <IoIosArrowDown className="w-[30px] h-[30px] cursor-pointer" onClick={
@@ -83,7 +84,7 @@ export default function Experience() {
                 } />}
             </div>
 
-            <div className="w-full max-h-[900px] p-[20px]" style={{ display: part ? 'block' : 'none' }}>
+            <div className="w-full max-h-[900px] p-[20px] border-t-[1px]" style={{ display: part ? 'block' : 'none',borderColor:border_color }}>
                 {
                     experiences.length === 0 ? (
                         <div className="w-[100%] h-[200px] flex items-center justify-center text-[30px] font-medium">No experience Added</div>
@@ -92,7 +93,7 @@ export default function Experience() {
                             {
                                 experiences.map((exp, index) => {
                                     return (
-                                        <div key={index} className="w-[100%] h-[120px] flex items-center  hover:bg-[#f7f7f7] p-[20px] cursor-pointer">
+                                        <div key={index} className="w-[100%] h-[120px] flex items-center p-[20px] cursor-pointer border-[1px] rounded-md mt-[10px]" style={{borderColor:border_color}}>
                                             <div className="w-[90%] h-[100%] flex flex-col" style={{}}>
                                                 <p className="text-[13px] font-medium">{exp.title}</p>
                                                 <p className="text-[25px] font-bold">{exp.company}</p>
@@ -100,7 +101,7 @@ export default function Experience() {
                                             </div>
                                             <Dialog>
                                                 <DialogTrigger className=""><MdDelete className="w-[20px] h-[20px] hover:animate-ping" style={{ color: '838383' }} /></DialogTrigger>
-                                                <DialogContent className="bg-white w-[500px]">
+                                                <DialogContent className="w-[500px]" style={{backgroundColor:div_color,color:text_color,borderColor:border_color}}>
                                                     <DialogHeader>
                                                         <DialogTitle>Delete Education</DialogTitle>
                                                         <DialogDescription className="h-[150px] flex flex-col ">
@@ -127,8 +128,8 @@ export default function Experience() {
                     )
                 }
                 <Dialog>
-                    <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className="w-[150px] h-[100%] shadow-sm shadow-[#b2b2b2] justify-center"><p className="mx-auto pt-[8px] font-medium">Add Experience</p></div></DialogTrigger>
-                    <DialogContent className="bg-white w-[500px]">
+                    <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className={`w-[150px] h-[100%] justify-center bg-[${normal_button_bg}] hover:bg-[${normal_hover_button_bg}] text-[${text_color}] rounded-md`}><p className="mx-auto pt-[8px] font-medium">Add Experience</p></div></DialogTrigger>
+                    <DialogContent className="w-[500px]" style={{borderColor:border_color,backgroundColor:div_color,color:text_color}}>
                         <DialogHeader>
                             <DialogTitle>Add Experience</DialogTitle>
                             <DialogDescription className="h-[250px] flex flex-col items-center justify-around">

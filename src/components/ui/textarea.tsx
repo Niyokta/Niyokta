@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { border_color } from "@/resource/theme"
 
 const Textarea = React.forwardRef<
   HTMLTextAreaElement,
@@ -14,6 +15,7 @@ const Textarea = React.forwardRef<
       )}
       ref={ref}
       {...props}
+      style={{borderColor:border_color}}
     />
   )
 })

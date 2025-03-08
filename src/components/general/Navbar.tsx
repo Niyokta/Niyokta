@@ -13,7 +13,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useAppDispatch } from "@/lib/reduxHooks";
 import { loadingstate } from "@/lib/features/userdetails";
-import { primary_background_color } from "@/resource/theme";
+import { border_color, box_shadow, div_color, primary_background_color, text_color } from "@/resource/theme";
 export default function Navbar() {
     const dispatch=useAppDispatch();
     const {toast}=useToast();
@@ -34,7 +34,7 @@ export default function Navbar() {
     }
     
     return (
-            <div className="w-[100%] h-[60px] rounded-md flex justify-between px-[20px] items-center" style={{ boxShadow: "0.1px 0.1px 0.1px 1px #dee0e2",userSelect:'none',backgroundColor:primary_background_color }}>
+            <div className="w-[100%] h-[60px] rounded-md flex justify-between px-[20px] items-center" style={{ boxShadow: box_shadow,userSelect:'none',backgroundColor:div_color,color:text_color }}>
                 <ul>
                     <li className="font-bold md:text-[25px]">Niyokta</li>
                 </ul>
@@ -45,7 +45,7 @@ export default function Navbar() {
                     <li>
                         <DropdownMenu>
                             <DropdownMenuTrigger className="items-center flex" ><CgProfile className="w-[30px] h-[30px]"/></DropdownMenuTrigger>
-                            <DropdownMenuContent className="mt-[30px] md:mr-[50px] md:w-[200px] bg-white">
+                            <DropdownMenuContent className="mt-[30px] md:mr-[50px] md:w-[200px] border-[1px]" style={{backgroundColor:div_color,boxShadow:box_shadow,color:text_color,borderColor:border_color}}>
                                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem className="cursor-pointer" onClick={()=>{dispatch(loadingstate(true));router.push('/profile')}}>Profile</DropdownMenuItem>

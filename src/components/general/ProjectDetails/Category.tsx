@@ -1,3 +1,4 @@
+import { box_shadow, div_color } from "@/resource/theme";
 import React from "react";
 
 export default function Category({categories}:{categories:string[]}){
@@ -6,7 +7,7 @@ export default function Category({categories}:{categories:string[]}){
             {
                 categories.map((category,index)=>{
                     return(
-                        <p key={index} className="px-[7px] py-[2px] bg-[#eeeeee] mr-[20px] rounded-md font-medium text-center">{category}</p>
+                        <p key={index} className="px-[7px] min-h-[50px] mr-[20px] rounded-md font-medium text-center flex justify-center items-center" style={{backgroundColor:div_color,boxShadow:box_shadow}}>{category}</p>
                     )
                 })
             }

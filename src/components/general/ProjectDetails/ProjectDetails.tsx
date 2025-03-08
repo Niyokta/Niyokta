@@ -7,6 +7,7 @@ import SkillsRequired from "./SkillsRequired";
 import Category from "./Category";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { box_shadow, text_color } from "@/resource/theme";
 export default function ProjectDetails({projectId}:{projectId:number}){
     const {toast}=useToast()
     const [projectDetails,setProjectDetails]=React.useState<ProjectModel>(DummyProject)
@@ -27,10 +28,10 @@ export default function ProjectDetails({projectId}:{projectId:number}){
     }
     React.useEffect(()=>{
         fetchProjectDetails()
-    })
+    },[])
     return(
         loading?<DetailsLoader/>:
-        <div className="w-[90%] md:w-[50%] mx-auto px-[20px] md:px-[60px] py-[50px] pt-[100px] min-h-screen text-[15px] font-light" style={{boxShadow:"1px 1px 5px 1px #eeeeee"}}>
+        <div className="w-[90%] md:w-[50%] mx-auto px-[20px] md:px-[60px] py-[50px] pt-[100px] min-h-screen text-[15px] font-light" style={{boxShadow:box_shadow}}>
             <div className="w-full h-[50px] flex items-center font-medium text-[20px] ">{projectDetails.title.length > 150? projectDetails.title?.slice(0,150)+".....":projectDetails.title}</div>
             <p className="flex pt-[5px]">Status : <p className="font-bold text-red-600 px-[5px] mb-[50px]">{projectDetails.status}</p></p>
             <div className="w-full min-h-[200px] max-h-[500px] overflow-hidden mt-[20px] flex flex-col md:flex-row">
@@ -60,13 +61,13 @@ export default function ProjectDetails({projectId}:{projectId:number}){
 
             </div>
             
-            <p className="text-[20px] mt-[20px]">Skills Required</p>
+            <p className="text-[20px] mt-[20px] font-bold">Skills Required</p>
             <SkillsRequired skills={projectDetails.skills_required}/>
-            <p className="text-[20px] pt-[20px]">Category</p>
+            <p className="text-[20px] pt-[20px] font-bold">Category</p>
             <Category categories={projectDetails.category}/>
             
             <div className="w-full flex justify-end">
-                <Button className="w-[200px] h-[50px] text-[20px]" variant="outline">Sign In To Bid</Button>
+                <Button className="w-[200px] h-[50px] text-[20px]" variant="default">Sign In To Bid</Button>
             </div>
         </div>
     )

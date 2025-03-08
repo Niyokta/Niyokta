@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { input_fields_color, input_placeholder_color, input_text_color } from "@/resource/theme"
+import { border_color, input_fields_color, input_placeholder_color, input_text_color } from "@/resource/theme"
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
@@ -17,7 +17,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         ref={ref}
         {...props}
-        style={{backgroundColor:input_fields_color}}
+        style={{backgroundColor:input_fields_color,borderColor:border_color,color:input_text_color}}
       />
     )
   }

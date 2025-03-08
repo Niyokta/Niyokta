@@ -32,9 +32,9 @@ export default function AuthLayout({
   })
   return (
     loading ? (
-      <div className="w-full h-full">
+      <div className="w-full h-screen">
         <div className="w-full h-[100px]"></div>
-        <TbLoader3 className="w-[50px] h-[50px] animate-spin mx-auto" />
+        <TbLoader3 className="w-[50px] h-[50px] animate-spin mx-auto" color="white"/>
       </div>
     ) : (
       children

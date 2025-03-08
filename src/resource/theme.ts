@@ -2,12 +2,12 @@ const primary_background_color = "#1B1F2A";
 const div_color = "#2A2E3B";
 const text_color = "#E0E0E0";
 const input_fields_color = "#3A3F4B";
-const normal_button_bg = "#246BFD";
-const normal_hover_button_bg = "#1A54C9";
+const normal_button_bg = "#2979FF";
+const normal_hover_button_bg = "#1C5FCC";
 const button_text = "#FFFFFF";
 const primary_accent_text = "#FFB400";
 const secondary_accent_text = "#14C8C4";
-
+const box_shadow="0px 4px 12px rgba(0, 0, 0, 0.3)";
 const border_color = "#4A4F5C";
 const disabled_button_bg = "#5A6273";
 const disabled_text_color = "#9CA3AF";
@@ -20,7 +20,11 @@ const modal_overlay = "rgba(0, 0, 0, 0.6)";
 const input_label_color = "#B0B3BA";
 const input_placeholder_color = "#8C92A0";
 const input_text_color = "#E0E0E0";
+const loader_background = "#323744"; 
+
 export {
+  loader_background,
+  box_shadow,
   input_label_color,
   input_placeholder_color,
   input_text_color,

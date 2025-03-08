@@ -2,10 +2,10 @@ import React from "react";
 import { Button } from "../ui/button";
 import { ProjectModel } from "@/lib/types/ProjectType";
 import Link from "next/link";
-import { div_color } from "@/resource/theme";
+import { box_shadow, div_color } from "@/resource/theme";
 export default function ProjectsMap({ projects }: { projects: ProjectModel[] }) {
     return (
-        <div className="mt-[50px]" style={{backgroundColor:div_color}}>
+        <div className="mt-[50px] rounded-md" style={{backgroundColor:div_color,boxShadow:box_shadow}}>
             <div className="w-full h-[50px] border-b-[1px] border-black flex items-center font-medium">
                 <p className="w-[15%] h-[50%] border-r-[1px] border-black text-center">Hosted On</p>
                 <p className="w-[55%] h-[50%] border-r-[1px] border-black text-center">Project Title</p>
