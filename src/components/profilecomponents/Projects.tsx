@@ -17,7 +17,7 @@ import {
     DialogClose
 } from "@/components/ui/dialog"
 import { useAppSelector } from "@/lib/reduxHooks";
-import { border_color, box_shadow, button_text, div_color, normal_button_bg, normal_hover_button_bg, text_color } from "@/resource/theme";
+import { border_color, box_shadow, button_text, div_color, normal_button_bg, normal_hover_button_bg, primary_accent_text, secondary_accent_text, text_color } from "@/resource/theme";
 export default function Projects() {
     const userid=useAppSelector(state=>state.user.userid)
     const clientname=useAppSelector(state=>state.user.userName)
@@ -96,7 +96,7 @@ export default function Projects() {
                                         <p className="text-[13px] font-light">{project.created_at.slice(0,10)} | Rs. {project.min_budget} - Rs. {project.max_budget}</p>
                                     </div>
                                     <Dialog>
-                                        <DialogTrigger className=""><MdDelete className="w-[20px] h-[20px] hover:animate-ping" style={{ color: '838383' }} /></DialogTrigger>
+                                        <DialogTrigger className=""><MdDelete className="w-[20px] h-[20px]"/></DialogTrigger>
                                         <DialogContent className="w-[500px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
                                             <DialogHeader>
                                                 <DialogTitle>Remove Project</DialogTitle>

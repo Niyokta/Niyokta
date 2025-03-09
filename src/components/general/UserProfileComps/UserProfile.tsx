@@ -8,6 +8,7 @@ import Education from "./Education";
 import Experience from "./Experience";
 import Socials from "./Socials";
 import UserProfileLoader from "./UserProfileLoader";
+import { box_shadow, div_color, primary_accent_text, secondary_accent_text } from "@/resource/theme";
 
 export default function UserProfile({ username }: { username: string }) {
     const { toast } = useToast()
@@ -53,9 +54,9 @@ export default function UserProfile({ username }: { username: string }) {
                     <UserProfileLoader/>
                 ) : (
                     <div className="font-light text-[15px]">
-                        <div className="p-[20px] rounded-md" style={{boxShadow:"1px 1px 5px 1px #eeeeee"}}>
-                            <p className="text-[60px] font-bold">{user.username}</p>
-                            <span className="flex items-center"><p className="underline underline-offset-4 pr-[10px]">{user.email}</p><IoCopyOutline className="cursor-pointer" onClick={() => {
+                        <div className="p-[20px] rounded-md" style={{boxShadow:box_shadow,backgroundColor:div_color}}>
+                            <p className="text-[60px] font-bold" style={{color:primary_accent_text}}>{user.username}</p>
+                            <span className="flex items-center"><p className="underline underline-offset-4 pr-[10px]" style={{color:secondary_accent_text}}>{user.email}</p><IoCopyOutline className="cursor-pointer" onClick={() => {
                                 navigator.clipboard.writeText(user.email)
                                     .then(() => toast({ title: "Email copied to clipboard" }))
                                     .catch((err) => toast({ title: err.message }))

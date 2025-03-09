@@ -6,7 +6,7 @@ import { AllProjectsLoader } from '@/components';
 import { CgChevronDoubleLeft, CgChevronDoubleRight } from '@/components/general/reacticons';
 import { DummyProject, ProjectModel } from '@/lib/types/ProjectType';
 import { useToast } from '@/hooks/use-toast';
-import { border_color } from '@/resource/theme';
+import { border_color, div_color } from '@/resource/theme';
 export default function Home() {
   const {toast}=useToast();
   const [loading,setloading]=React.useState<true | false>(true)
@@ -89,9 +89,9 @@ export default function Home() {
             setpageNumber(pageNumber-1);
           }
         }}/>
-        <p className='px-[10px]  py-[2px] opacity-35'>{firstPage.current}</p>
-        <p className='px-[10px]  py-[2px]'>{pageNumber}</p>
-        <p className='px-[10px]  py-[2px] opacity-35'>{lastPage.current}</p>
+        <p className='px-[10px]  py-[2px] opacity-35 rounded-md' style={{backgroundColor:div_color}}>{firstPage.current}</p>
+        <p className='px-[10px]  py-[2px] rounded-md' style={{backgroundColor:div_color}}>{pageNumber}</p>
+        <p className='px-[10px]  py-[2px] opacity-35 rounded-md' style={{backgroundColor:div_color}}>{lastPage.current}</p>
         <CgChevronDoubleRight className='w-[20px] h-[20px] cursor-pointer' onClick={()=>{
           if(pageNumber < lastPage.current){
             firstIndex.current=(pageNumber)*10;

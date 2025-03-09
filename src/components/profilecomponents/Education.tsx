@@ -92,7 +92,7 @@ export default function Education() {
                                                 <div className="flex text-[10px] font-light"><p>{edu.yearFrom} - </p> <p>{edu.yearTo}</p></div>
                                             </div>
                                             <Dialog>
-                                                <DialogTrigger className=""><MdDelete className="w-[20px] h-[20px] hover:animate-ping" style={{ color: '838383' }} /></DialogTrigger>
+                                                <DialogTrigger className=""><MdDelete className="w-[20px] h-[20px]" /></DialogTrigger>
                                                 <DialogContent className="w-[500px]" style={{backgroundColor:div_color,color:text_color,borderColor:border_color}}>
                                                     <DialogHeader>
                                                         <DialogTitle>Delete Education</DialogTitle>

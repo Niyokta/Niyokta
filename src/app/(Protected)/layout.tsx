@@ -33,6 +33,7 @@ export default function ProtectedLayout({
           toast({ title: err.message })
         })
     }
+    
     authVerification();
   })
   return (

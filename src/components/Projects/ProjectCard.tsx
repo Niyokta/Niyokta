@@ -29,7 +29,7 @@ const ProjectCard = ({ filter,project_id, title, client_name,category, client_co
           skills.length > 0 ? skills.map((skill, index) => {
             if (index > 6 || skill === "") return;
             return (
-              <p className="text-[10px] px-[3px] py-[1px] font-medium rounded-sm mr-[5px] cursor-default border-[1px]" key={index} style={{ borderColor:border_color,boxShadow:box_shadow}}>{skill}</p>
+              <p className="text-[10px] px-[3px] py-[1px] font-medium rounded-sm mr-[5px] cursor-default border-[1px]" key={index} style={{ borderColor:border_color}}>{skill}</p>
             )
           }) : (
             <p></p>
