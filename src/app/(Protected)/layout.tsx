@@ -13,7 +13,7 @@ export default function ProtectedLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const {toast}=useToast();
+  const { toast } = useToast();
   const router = useRouter();
   const [loading, setloading] = React.useState(true);
 
@@ -30,25 +30,29 @@ export default function ProtectedLayout({
         })
         .catch((err) => {
           setloading(false);
-          toast({title:err.message})
+          toast({ title: err.message })
         })
     }
+    
     authVerification();
   })
   return (
     loading ? (
-      <TbLoader3 className="w-[50px] h-[50px] animate-spin mx-auto mt-[100px]"/>
+      <div className="w-full h-screen">
+        <div className="w-full h-[100px]"></div>
+        <TbLoader3 className="w-[50px] h-[50px] animate-spin mx-auto" />
+      </div>
     ) : (
       <>
         <StoreProvider>
-          <div className=" w-full h-screen ">
+          <div className=" w-full min-h-screen">
             <div className="w-[90%] md:w-[70%] h-[100%] m-auto py-[10px]">
-              <UserDataFetching/>
-              <Navbar/>
+              <UserDataFetching />
+              <Navbar />
               <ChildLayout>
                 {children}
               </ChildLayout>
-              <Footer/>
+              <Footer />
             </div>
           </div>
         </StoreProvider>

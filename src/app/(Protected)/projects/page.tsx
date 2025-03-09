@@ -6,6 +6,7 @@ import { AllProjectsLoader } from '@/components';
 import { CgChevronDoubleLeft, CgChevronDoubleRight } from '@/components/general/reacticons';
 import { DummyProject, ProjectModel } from '@/lib/types/ProjectType';
 import { useToast } from '@/hooks/use-toast';
+import { border_color, div_color } from '@/resource/theme';
 export default function Home() {
   const {toast}=useToast();
   const [loading,setloading]=React.useState<true | false>(true)
@@ -44,7 +45,7 @@ export default function Home() {
     ):
     <div>
       <div className='w-full h-[100px] flex items-center justify-end'>
-        <Checkbox className='w-[15px] h-[15px]' onCheckedChange={()=>{
+        <Checkbox className='w-[15px] h-[15px] border-[1px]' onCheckedChange={()=>{
           if(filter.includes("Web Development")){
             const temp=filter.filter(s=>s!="Web Development");
             setfilter(temp);
@@ -52,8 +53,8 @@ export default function Home() {
           else{
             setfilter([...filter,"Web Development"])
           }
-        }}/> <p className='px-[10px] font-light text-[13px]'>Web Development</p>
-        <Checkbox className='w-[15px] h-[15px]' onCheckedChange={()=>{
+        }} style={{borderColor:border_color}}/> <p className='px-[10px] font-light text-[13px]'>Web Development</p>
+        <Checkbox className='w-[15px] h-[15px] border-[1px]' onCheckedChange={()=>{
           if(filter.includes("Graphic Design")){
             const temp=filter.filter(s=>s!="Graphic Design");
             setfilter(temp);
@@ -61,8 +62,8 @@ export default function Home() {
           else{
             setfilter([...filter,"Graphic Design"])
           }
-        }}/> <p className='px-[10px] font-light text-[13px]'>Graphic Design</p>
-        <Checkbox className='w-[15px] h-[15px]' onCheckedChange={()=>{
+        }} style={{borderColor:border_color}}/> <p className='px-[10px] font-light text-[13px]'>Graphic Design</p>
+        <Checkbox className='w-[15px] h-[15px] border-[1px]' onCheckedChange={()=>{
           if(filter.includes("Android Development")){
             const temp=filter.filter(s=>s!="Android Development");
             setfilter(temp);
@@ -70,7 +71,7 @@ export default function Home() {
           else{
             setfilter([...filter,"Android Development"])
           }
-        }}/> <p className='px-[10px] font-light text-[13px]'>Android Development</p>
+        }} style={{borderColor:border_color}}/> <p className='px-[10px] font-light text-[13px]'>Android Development</p>
       </div>
       
       <div className='grid grid-flow-row grid-col-1 md:grid-cols-2 gap-10'>
@@ -88,9 +89,9 @@ export default function Home() {
             setpageNumber(pageNumber-1);
           }
         }}/>
-        <p className='px-[10px] bg-[#eeeeee] py-[2px] opacity-35'>{firstPage.current}</p>
-        <p className='px-[10px] bg-[#eeeeee] py-[2px]'>{pageNumber}</p>
-        <p className='px-[10px] bg-[#eeeeee] py-[2px] opacity-35'>{lastPage.current}</p>
+        <p className='px-[10px]  py-[2px] opacity-35 rounded-md' style={{backgroundColor:div_color}}>{firstPage.current}</p>
+        <p className='px-[10px]  py-[2px] rounded-md' style={{backgroundColor:div_color}}>{pageNumber}</p>
+        <p className='px-[10px]  py-[2px] opacity-35 rounded-md' style={{backgroundColor:div_color}}>{lastPage.current}</p>
         <CgChevronDoubleRight className='w-[20px] h-[20px] cursor-pointer' onClick={()=>{
           if(pageNumber < lastPage.current){
             firstIndex.current=(pageNumber)*10;

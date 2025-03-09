@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dialog"
 import { useAppSelector,useAppDispatch } from "@/lib/reduxHooks";
 import { addeducation, removeeducation } from "@/lib/features/userdetails";
+import { border_color, box_shadow, button_text, div_color, normal_button_bg, normal_hover_button_bg, text_color } from "@/resource/theme";
 export default function Education() {
     const dispatch=useAppDispatch()
     const { toast } = useToast();
@@ -62,7 +63,7 @@ export default function Education() {
         toast({ title: "Record Deleted Successfully", description: "Please refresh the page" })
     }
     return (
-        <div className="w-full min-h-[70px] max-h-[900px] mt-[20px] flex flex-col" style={{ boxShadow: "0.1px 0.1px 0.1px 1px #dee0e2", userSelect: 'none' }}>
+        <div className="w-full min-h-[70px] max-h-[900px] mt-[20px] flex flex-col" style={{ boxShadow: box_shadow, userSelect: 'none',backgroundColor:div_color }}>
             <div className="w-full h-[70px] flex items-center justify-between px-[20px]">
                 <p className="text-[20px] font-bold">Education</p>
                 {!part ? <IoIosArrowDown className="w-[30px] h-[30px] cursor-pointer" onClick={
@@ -75,7 +76,7 @@ export default function Education() {
                     }
                 } />}
             </div>
-            <div className="w-full max-h-[900px] p-[20px]" style={{ display: part ? 'block' : 'none' }}>
+            <div className="w-full max-h-[900px] p-[20px] border-t-[1px]" style={{ display: part ? 'block' : 'none',borderColor:border_color }}>
                 {
                      educations.length === 0 ? (
                         <div className="w-[100%] h-[200px] flex items-center justify-center text-[30px] font-medium">No education Added</div>
@@ -84,15 +85,15 @@ export default function Education() {
                             {
                                 educations.map((edu, index) => {
                                     return (
-                                        <div key={index} className="w-[100%] h-[120px] flex items-center  hover:bg-[#f7f7f7] p-[20px] cursor-pointer">
+                                        <div key={index} className="w-[100%] h-[120px] flex items-center p-[20px] cursor-pointer border-[1px] rounded-md mt-[10px]" style={{borderColor:border_color}}>
                                             <div className="w-[90%] h-[100%] flex flex-col" style={{}}>
                                                 <p className="text-[13px] font-medium">{edu.courseName}</p>
                                                 <p className="text-[25px] font-bold">{edu.institute}</p>
                                                 <div className="flex text-[10px] font-light"><p>{edu.yearFrom} - </p> <p>{edu.yearTo}</p></div>
                                             </div>
                                             <Dialog>
-                                                <DialogTrigger className=""><MdDelete className="w-[20px] h-[20px] hover:animate-ping" style={{ color: '838383' }} /></DialogTrigger>
-                                                <DialogContent className="bg-white w-[500px]">
+                                                <DialogTrigger className=""><MdDelete className="w-[20px] h-[20px]" /></DialogTrigger>
+                                                <DialogContent className="w-[500px]" style={{backgroundColor:div_color,color:text_color,borderColor:border_color}}>
                                                     <DialogHeader>
                                                         <DialogTitle>Delete Education</DialogTitle>
                                                         <DialogDescription className="h-[150px] flex flex-col ">
@@ -119,8 +120,8 @@ export default function Education() {
                     )
                 }
                 <Dialog>
-                    <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className="w-[150px] h-[100%] shadow-sm shadow-[#b2b2b2] justify-center"><p className="mx-auto pt-[8px] font-medium">Add Education</p></div></DialogTrigger>
-                    <DialogContent className="bg-white w-[500px]">
+                    <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className={`w-[150px] h-[100%] justify-center bg-[${normal_button_bg}] hover:bg-[${normal_hover_button_bg}] text-[${button_text}] rounded-md`}><p className="mx-auto pt-[8px] font-medium">Add Education</p></div></DialogTrigger>
+                    <DialogContent className="w-[500px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
                         <DialogHeader>
                             <DialogTitle>Add Education</DialogTitle>
                             <DialogDescription className="h-[250px] flex flex-col items-center justify-around">

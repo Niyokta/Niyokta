@@ -2,10 +2,11 @@ import React from "react";
 import { Button } from "../ui/button";
 import { ProjectModel } from "@/lib/types/ProjectType";
 import Link from "next/link";
+import { box_shadow, div_color } from "@/resource/theme";
 export default function ProjectsMap({ projects }: { projects: ProjectModel[] }) {
     return (
-        <div className="mt-[50px]">
-            <div className="w-full h-[50px] border-b-[1px] border-t-[1px] border-r-[1px] border-l-[1px] border-black flex items-center font-medium">
+        <div className="mt-[50px] rounded-md" style={{backgroundColor:div_color,boxShadow:box_shadow}}>
+            <div className="w-full h-[50px] border-b-[1px] border-black flex items-center font-medium">
                 <p className="w-[15%] h-[50%] border-r-[1px] border-black text-center">Hosted On</p>
                 <p className="w-[55%] h-[50%] border-r-[1px] border-black text-center">Project Title</p>
                 <p className="w-[15%] h-[50%] border-r-[1px] border-black text-center">Status</p>
@@ -14,7 +15,7 @@ export default function ProjectsMap({ projects }: { projects: ProjectModel[] }) 
             {
                 projects.map((project, index) => {
                     return (
-                        <div key={index} className="w-full h-[50px] border-b-[1px] border-black border-r-[1px] border-l-[1px] flex hover:bg-[#eeeeee] items-center">
+                        <div key={index} className="w-full h-[50px] border-b-[1px] border-black  flex items-center">
                             <p className="w-[15%] h-[50%] border-r-[1px] border-black text-center">{`${project.created_at?.slice(8, 10)} / ${project.created_at?.slice(5, 7)} / ${project.created_at?.slice(0, 4)}`}</p>
                             <p className="w-[55%] h-[50%] border-r-[1px] border-black text-justify px-[20px]">{project.title.slice(0,80)+" ......"}</p>
                             <p className="w-[15%] h-[50%] border-r-[1px] border-black text-center font-bold capitalize" style={{color:project.status==="completed"?"green":"red"}}>{project.status}</p>
@@ -23,7 +24,7 @@ export default function ProjectsMap({ projects }: { projects: ProjectModel[] }) 
                     )
                 })
             }
-            <div className="w-full flex justify-end px-[10px] text-[15px] underline text-blue-600 font-medium cursor-pointer"><Link href="/projects">view all Projects</Link></div>
+            <div className="w-full flex justify-end px-[10px] text-[15px] underline text-blue-600 font-medium cursor-pointer py-[10px]"><Link href="/projects">view all Projects</Link></div>
         </div>
     )
 }
