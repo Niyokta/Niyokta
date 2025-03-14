@@ -48,7 +48,7 @@ export default function UserProfile({ username }: { username: string }) {
         getUserDetails()
     },[])
     return (
-        <div className="w-[50%] h-screen mx-auto p-[30px]" >
+        <div className="w-[50%] min-h-screen mx-auto p-[30px]" >
             {
                 loading ? (
                     <UserProfileLoader/>

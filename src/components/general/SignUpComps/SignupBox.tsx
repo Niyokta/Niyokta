@@ -7,6 +7,7 @@ import { TbLoader3, CgChevronDoubleRight, CgChevronDoubleLeft, FaLinkedinIn, FaG
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast"
 import Link from "next/link";
+import validateCredentials from "@/helper/signupvalidation";
 import { div_color,input_label_color,primary_accent_text,text_color } from "@/resource/theme";
 export default function SignupBox() {
     const { toast } = useToast();
@@ -31,6 +32,12 @@ export default function SignupBox() {
 
     const handlesignup = async () => {
         setloading(true)
+        const validation=validateCredentials(usercreds.username,usercreds.password,usercreds.cnfpassword,usercreds.birth_date,usercreds.email,usercreds.country);
+        if(validation.status!=200){
+            toast({title:validation.message});
+            setloading(false);
+            return;
+        }
         await fetch('/api/Auth/Signup', {
             method: 'POST',
             credentials: 'include',
