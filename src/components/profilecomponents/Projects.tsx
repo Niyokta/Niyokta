@@ -90,13 +90,13 @@ export default function Projects() {
                     ) : (
                         projects.map((project, index) => {
                             return (
-                                <div className="w-[100%] h-[70px] flex items-center px-[20px] rounded-md border-[1px] mt-[10px]" key={index} style={{borderColor:border_color}}>
+                                <div className="w-[100%] min-h-[70px] flex items-center gap-3 py-[10px] md:py-[0px] px-[10px] md:px-[20px] rounded-md border-[1px] mt-[10px]" key={index} style={{borderColor:border_color}}>
                                     <div className="w-[90%]">
-                                        <p className="text-[15px] font-light">{project.title.length > 150?project.title.slice(0,150)+" .....":project.title}</p>
-                                        <p className="text-[13px] font-light">{project.created_at.slice(0,10)} | Rs. {project.min_budget} - Rs. {project.max_budget}</p>
+                                        <p className="text-[12px] md:text-[15px] font-light">{project.title.length > 150?project.title.slice(0,150)+" .....":project.title}</p>
+                                        <p className="text-[12px] md:text-[15px] font-light">{project.created_at.slice(0,10)} | Rs. {project.min_budget} - Rs. {project.max_budget}</p>
                                     </div>
                                     <Dialog>
-                                        <DialogTrigger className=""><MdDelete className="w-[20px] h-[20px]"/></DialogTrigger>
+                                        <DialogTrigger className=""><MdDelete className="w-[15px] h-[15px] md:w-[20px] md:h-[20px]"/></DialogTrigger>
                                         <DialogContent className="w-[500px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
                                             <DialogHeader>
                                                 <DialogTitle>Remove Project</DialogTitle>
@@ -123,7 +123,7 @@ export default function Projects() {
                 }
                 <Dialog>
                     <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className={`w-[150px] h-[100%] justify-center rounded-md bg-[${normal_button_bg}] hover:bg-[${normal_hover_button_bg}]`} style={{color:button_text}}><p className="mx-auto pt-[8px] font-medium">Add New Project</p></div></DialogTrigger>
-                    <DialogContent className="w-[450px] md:w-[900px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
+                    <DialogContent className="w-[380px] sm:w-[550px] md:w-[700px] rounded-md px-[10px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
                         <DialogHeader>
                             <DialogTitle>Host a New Project</DialogTitle>
                             <DialogDescription className="h-[700px] flex flex-col">

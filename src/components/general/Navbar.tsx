@@ -41,7 +41,6 @@ export default function Navbar() {
                 <ul className="flex w-[70%] md:w-[40%] justify-around text-[12px] md:text-[17px] items-center font-medium">
                     <li onClick={() => router.push('/projects')} className="cursor-pointer">Projects</li>
                     <li onClick={() => router.push('/people')} className="cursor-pointer">People</li>
-                    <li onClick={() => router.push('/dashboard')} className="cursor-pointer">Dashboard</li>
                     <li>
                         <DropdownMenu>
                             <DropdownMenuTrigger className="items-center flex" ><CgProfile className="w-[30px] h-[30px]"/></DropdownMenuTrigger>
