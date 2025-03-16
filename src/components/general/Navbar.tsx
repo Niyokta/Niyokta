@@ -34,13 +34,13 @@ export default function Navbar() {
     }
     
     return (
-            <div className="w-[100%] h-[60px] rounded-md flex justify-between px-[20px] items-center" style={{ boxShadow: box_shadow,userSelect:'none',backgroundColor:div_color,color:text_color }}>
+            <div className="w-[100%] h-[60px] rounded-md flex justify-between px-[20px] items-center mt-[20px]" style={{ boxShadow: box_shadow,userSelect:'none',backgroundColor:div_color,color:text_color }}>
                 <ul>
                     <li className="font-bold md:text-[25px]" style={{color:primary_accent_text}}>Niyokta</li>
                 </ul>
-                <ul className="flex w-[70%] md:w-[40%] justify-around text-[12px] md:text-[17px] items-center font-medium">
-                    <li onClick={() => router.push('/projects')} className="cursor-pointer">Projects</li>
-                    <li onClick={() => router.push('/people')} className="cursor-pointer">People</li>
+                <ul className="flex w-[70%] md:w-[20%] justify-around text-[12px] md:text-[17px] items-center font-medium">
+                    <li onClick={() => router.push('/projects')} className="cursor-pointer underline underline-offset-2">Projects</li>
+                    <li onClick={() => router.push('/people')} className="cursor-pointer underline underline-offset-2">People</li>
                     <li>
                         <DropdownMenu>
                             <DropdownMenuTrigger className="items-center flex" ><CgProfile className="w-[30px] h-[30px]"/></DropdownMenuTrigger>
