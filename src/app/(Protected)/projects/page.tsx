@@ -53,7 +53,7 @@ export default function Home() {
           else{
             setfilter([...filter,"Web Development"])
           }
-        }} style={{borderColor:border_color}}/> <p className='px-[10px] font-light text-[13px]'>Web Development</p>
+        }} style={{borderColor:border_color}}/> <p className='px-[10px] font-light text-[10px] md:text-[13px]'>Web Development</p>
         <Checkbox className='w-[15px] h-[15px] border-[1px]' onCheckedChange={()=>{
           if(filter.includes("Graphic Design")){
             const temp=filter.filter(s=>s!="Graphic Design");
@@ -62,7 +62,7 @@ export default function Home() {
           else{
             setfilter([...filter,"Graphic Design"])
           }
-        }} style={{borderColor:border_color}}/> <p className='px-[10px] font-light text-[13px]'>Graphic Design</p>
+        }} style={{borderColor:border_color}}/> <p className='px-[10px] font-light text-[10px] md:text-[13px]'>Graphic Design</p>
         <Checkbox className='w-[15px] h-[15px] border-[1px]' onCheckedChange={()=>{
           if(filter.includes("Android Development")){
             const temp=filter.filter(s=>s!="Android Development");
@@ -71,7 +71,7 @@ export default function Home() {
           else{
             setfilter([...filter,"Android Development"])
           }
-        }} style={{borderColor:border_color}}/> <p className='px-[10px] font-light text-[13px]'>Android Development</p>
+        }} style={{borderColor:border_color}}/> <p className='px-[10px] font-light text-[10px] md:text-[13px]'>Android Development</p>
       </div>
       
       <div className='grid grid-flow-row grid-col-1 md:grid-cols-2 gap-10'>

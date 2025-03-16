@@ -18,10 +18,10 @@ const ProjectCard = ({ filter,project_id, title, client_name,category, client_co
   }
   
   return (
-    <div className="p-[20px] font-light text-[15px] hover:bg-[#f7f7f7] rounded-md" style={{ boxShadow: box_shadow,display:display,backgroundColor:div_color }}>
-      <p className="text-[12px]" style={{color:primary_accent_text}}>{`${client_name} ( ${client_country} )`}</p>
+    <div className="p-[20px] font-light text-[12px] md:text-[15px] hover:bg-[#f7f7f7] rounded-md" style={{ boxShadow: box_shadow,display:display,backgroundColor:div_color }}>
+      <p className="text-[10px] md:text-[12px]" style={{color:primary_accent_text}}>{`${client_name} ( ${client_country} )`}</p>
       <p className="pt-[5px] font-medium">{title.length > 80 ? title.slice(0, 80) + "......" : title}</p>
-      <p className="text-[12px] pb-[20px] underline-offset-2 underline">{`Min-Bid Price : ₹ ${min_budget}`}  </p>
+      <p className="text-[10px] md:text-[12px] pb-[10px] md:pb-[20px] underline-offset-2 underline">{`Min-Bid Price : ₹ ${min_budget}`}  </p>
 
       
       <span className="flex">
@@ -36,7 +36,7 @@ const ProjectCard = ({ filter,project_id, title, client_name,category, client_co
           )
         }
       </span>
-      <Link href={`/project/${project_id}`}><p className="text-[11px] pt-[20px] cursor-pointer font-medium" style={{color:secondary_accent_text}}>Read More</p></Link>
+      <Link href={`/project/${project_id}`}><p className="text-[11px] pt-[10px] md:pt-[20px] cursor-pointer font-medium" style={{color:secondary_accent_text}}>Read More</p></Link>
     </div>
   );
 };
