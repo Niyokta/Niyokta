@@ -8,8 +8,8 @@ export default function RecentProjects(){
     const sortedProjects=[...projects].reverse();
     const topfive=sortedProjects.slice(0,5);
     return(
-        <div className="mt-[50px]">
-            <p className="text-[30px] pt-[30px] font-bold text-center">Recent Projects</p>
+        <div className="md:mt-[50px]">
+            <p className="text-[15px] md:text-[30px] pt-[30px] font-bold md:text-center">Recent Projects</p>
             {
                 username=="" ? <NoProjects/> : <ProjectsMap projects={topfive}/>
             }
