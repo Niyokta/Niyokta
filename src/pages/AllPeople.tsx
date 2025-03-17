@@ -34,30 +34,27 @@ export default function AllPeople() {
     }, [])
     return (
         loading ? (
-            <div className="grid grid-flow-row grid-cols-1 md:grid-cols-4 gap-10 mt-[50px]">
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
-                <div className="w-[300px] h-[200px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
+            <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 mt-[50px]">
+                <div className="min-w-[100px] h-[100px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
+                <div className="min-w-[100px] h-[100px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
+                <div className="min-w-[100px] h-[100px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
+                <div className="min-w-[100px] h-[100px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
+                <div className="min-w-[100px] h-[100px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
+                <div className="min-w-[100px] h-[100px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
+                <div className="min-w-[100px] h-[100px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
+                <div className="min-w-[100px] h-[100px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
+                <div className="min-w-[100px] h-[100px] rounded-md animate-pulse" style={{backgroundColor:div_color,boxShadow:box_shadow}}></div>
             </div>
         ) : (
             <>
-                <div className="h-[100px] w-full flex justify-end items-center">
-                    <Input placeholder="search" className="w-[300px] rounded-[50px] px-[20px] " onChange={(e) => setsearch(e.target.value)} />
+                <div className="h-[70px] md:h-[100px] w-full flex justify-end items-center">
+                    <Input placeholder="Search By Username" className="w-full md:w-[300px] md:rounded-[50px] px-[20px] " onChange={(e) => setsearch(e.target.value)} />
                 </div>
-                <div className="grid grid-flow-row grid-cols-1 md:grid-cols-4 gap-10">
+                <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
                     {
                         users.length === 0 ? <p>Length 0</p> : users.map((user, index) => {
                             return (
-                                <UserCard key={index} filter={search} payload={{
+                                <UserCard key={index} filter={search.toUpperCase()} payload={{
                                     username: user.username, email: user.email, linkedin: user.linkedin, github: user.github, x: user.x, workingHours: user.workingHours, DOB: user.DOB, country: user.country, phoneNumber: user.phoneNumber
                                 }} />
                             )

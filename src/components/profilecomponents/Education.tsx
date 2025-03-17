@@ -85,24 +85,24 @@ export default function Education() {
                             {
                                 educations.map((edu, index) => {
                                     return (
-                                        <div key={index} className="w-[100%] h-[120px] flex items-center p-[20px] cursor-pointer border-[1px] rounded-md mt-[10px]" style={{borderColor:border_color}}>
+                                        <div key={index} className="w-[100%] min-h-[80px] py-[10px] flex items-center p-[10px] md:p-[20px] cursor-pointer border-[1px] rounded-md mt-[10px]" style={{borderColor:border_color}}>
                                             <div className="w-[90%] h-[100%] flex flex-col" style={{}}>
-                                                <p className="text-[13px] font-medium">{edu.courseName}</p>
-                                                <p className="text-[25px] font-bold">{edu.institute}</p>
-                                                <div className="flex text-[10px] font-light"><p>{edu.yearFrom} - </p> <p>{edu.yearTo}</p></div>
+                                                <p className="text-[11px] sm:text-[13px] font-medium">{edu.courseName}</p>
+                                                <p className=" text-[15px] sm:text-[25px] font-bold">{edu.institute}</p>
+                                                <div className="flex text-[11px] sm:text-[10px] font-light"><p>{edu.yearFrom} - </p> <p>{edu.yearTo}</p></div>
                                             </div>
                                             <Dialog>
                                                 <DialogTrigger className=""><MdDelete className="w-[20px] h-[20px]" /></DialogTrigger>
-                                                <DialogContent className="w-[500px]" style={{backgroundColor:div_color,color:text_color,borderColor:border_color}}>
+                                                <DialogContent className="w-[350px] sm:w-[500px] rounded-md px-[10px]" style={{backgroundColor:div_color,color:text_color,borderColor:border_color}}>
                                                     <DialogHeader>
                                                         <DialogTitle>Delete Education</DialogTitle>
                                                         <DialogDescription className="h-[150px] flex flex-col ">
                                                             <span className="w-[90%] flex flex-col mt-[30px]" style={{}}>
-                                                                <span className="text-[13px] font-medium">{edu.courseName}</span>
-                                                                <span className="text-[25px] font-bold">{edu.institute}</span>
-                                                                <span className="flex text-[10px] font-light"><span>{edu.yearFrom} - </span> <span>{edu.yearTo}</span></span>
+                                                                <span className="text-[11px] sm:text-[13px] font-medium">{edu.courseName}</span>
+                                                                <span className="text-[15px] sm:text-[25px] font-bold">{edu.institute}</span>
+                                                                <span className="flex text-[11px] sm:text-[10px] font-light"><span>{edu.yearFrom} - </span> <span>{edu.yearTo}</span></span>
                                                             </span>
-                                                            <span className="font-medium text-[20px] text-left mt-[20px]">Do you really want to delete this record ?</span>
+                                                            <span className="font-medium text-[11px] sm:text-[10px] text-left mt-[20px]">Do you really want to delete this record ?</span>
                                                         </DialogDescription>
                                                     </DialogHeader>
                                                     <DialogFooter>
@@ -121,7 +121,7 @@ export default function Education() {
                 }
                 <Dialog>
                     <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className={`w-[150px] h-[100%] justify-center bg-[${normal_button_bg}] hover:bg-[${normal_hover_button_bg}] text-[${button_text}] rounded-md`}><p className="mx-auto pt-[8px] font-medium">Add Education</p></div></DialogTrigger>
-                    <DialogContent className="w-[500px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
+                    <DialogContent className="w-[350px] sm:w-[500px] rounded-md px-[10px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
                         <DialogHeader>
                             <DialogTitle>Add Education</DialogTitle>
                             <DialogDescription className="h-[250px] flex flex-col items-center justify-around">

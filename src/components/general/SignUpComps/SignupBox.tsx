@@ -76,8 +76,8 @@ export default function SignupBox() {
             </div>
         ) : curr === 0 ? (
             <div className="w-full h-screen flex items-center justify-center">
-                <Card className="w-[80%] md:w-[600px] h-[600px]" style={{backgroundColor:div_color,color:text_color}}>
-                    <CardHeader>
+                <Card className="w-[95%] md:w-[600px] h-[600px] text-[14px]" style={{backgroundColor:div_color,color:text_color}}>
+                    <CardHeader className="text-[17px]">
                         <CardTitle style={{color:primary_accent_text}}>Create Account</CardTitle>
                         <CardDescription>Enter credentials to create a new account</CardDescription>
                     </CardHeader>
@@ -112,8 +112,8 @@ export default function SignupBox() {
         ) : (
             <div>
                 <div className="w-full h-screen flex items-center justify-center">
-                    <Card className="w-[80%] md:w-[600px] h-[650px]" style={{backgroundColor:div_color,color:text_color}}>
-                        <CardHeader>
+                    <Card className="w-[95%] md:w-[600px] h-[650px] text-[14px]" style={{backgroundColor:div_color,color:text_color}}>
+                        <CardHeader className="text-[17px]">
                             <CardTitle style={{color:primary_accent_text}}>Create Account</CardTitle>
                             <CardDescription>Enter credentials to create a new account</CardDescription>
                         </CardHeader>
@@ -131,14 +131,14 @@ export default function SignupBox() {
                         </CardContent>
                         <CardContent>
                             <p style={{color:input_label_color}}>Social Links</p>
-                            <div className="flex items-center justify-between pt-[20px]">
-                                <FaLinkedinIn className="w-[30px] h-[30px]" /><Input className="w-[90%]" value={socials.linkedin}  placeholder="LinkedIn" onKeyDown={handlekeydown} onChange={(e) => setsocials((prev) => ({ ...prev, linkedin: e.target.value }))} />
+                            <div className="flex items-center justify-between pt-[20px] gap-3">
+                                <FaLinkedinIn className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]" /><Input className="w-[90%]" value={socials.linkedin}  placeholder="LinkedIn" onKeyDown={handlekeydown} onChange={(e) => setsocials((prev) => ({ ...prev, linkedin: e.target.value }))} />
                             </div>
-                            <div className="flex items-center justify-between pt-[20px]">
-                                <FaGithub className="w-[30px] h-[30px]" /><Input className="w-[90%]" value={socials.github} placeholder="GitHub" onKeyDown={handlekeydown} onChange={(e) => setsocials((prev) => ({ ...prev, github: e.target.value }))} />
+                            <div className="flex items-center justify-between pt-[20px] gap-3">
+                                <FaGithub className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]" /><Input className="w-[90%]" value={socials.github} placeholder="GitHub" onKeyDown={handlekeydown} onChange={(e) => setsocials((prev) => ({ ...prev, github: e.target.value }))} />
                             </div>
-                            <div className="flex items-center justify-between pt-[20px]">
-                                <FaXTwitter className="w-[30px] h-[30px]" /><Input className="w-[90%]" value={socials.x} placeholder="Twitter / X" onKeyDown={handlekeydown} onChange={(e) => setsocials((prev) => ({ ...prev, x: e.target.value }))} />
+                            <div className="flex items-center justify-between pt-[20px] gap-3">
+                                <FaXTwitter className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]" /><Input className="w-[90%]" value={socials.x} placeholder="Twitter / X" onKeyDown={handlekeydown} onChange={(e) => setsocials((prev) => ({ ...prev, x: e.target.value }))} />
                             </div>
                         </CardContent>
                         <CardFooter className="flex flex-col">
