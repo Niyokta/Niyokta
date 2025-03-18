@@ -25,7 +25,7 @@ export default function PersonalInfo() {
             {/* content  */}
 
 
-            <div className="w-full max-h-[430px] font-light text-[14px] p-[20px] border-t-[1px]" style={{ display: part ? 'block' : 'none', userSelect: 'none',borderColor:border_color }} >
+            <div className="w-full max-h-[450px] font-light text-[14px] p-[20px] border-t-[1px]" style={{ display: part ? 'block' : 'none', userSelect: 'none',borderColor:border_color }} >
                 <div className="px-[20px] mb-[30px]">
                     <div className="flex">
                         <p className="text-[30px] pr-[10px] uppercase font-medium">{useAppSelector(state => state.user.userName)}</p>

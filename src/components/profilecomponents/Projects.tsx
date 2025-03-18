@@ -17,7 +17,7 @@ import {
     DialogClose
 } from "@/components/ui/dialog"
 import { useAppSelector } from "@/lib/reduxHooks";
-import { border_color, box_shadow, button_text, div_color, normal_button_bg, normal_hover_button_bg, primary_accent_text, secondary_accent_text, text_color } from "@/resource/theme";
+import { border_color, box_shadow, button_text, div_color, normal_button_bg, normal_hover_button_bg, primary_accent_text, primary_background_color, secondary_accent_text, text_color } from "@/resource/theme";
 export default function Projects() {
     const userid=useAppSelector(state=>state.user.userid)
     const clientname=useAppSelector(state=>state.user.userName)
@@ -81,7 +81,7 @@ export default function Projects() {
                     }
                 } />}
             </div>
-            <div className="w-full  p-[20px] border-t-[1px]" style={{ display: part ? 'block' : 'none',borderColor:border_color }}>
+            <div className="w-full p-[10px] md:p-[20px] border-t-[1px]" style={{ display: part ? 'block' : 'none',borderColor:border_color }}>
                 {
                     projects.length === 0 ? (
                         <div className="w-full h-[100px] flex items-center justify-center text-[30px] font-bold">
@@ -92,7 +92,7 @@ export default function Projects() {
                             return (
                                 <div className="w-[100%] min-h-[70px] flex items-center gap-3 py-[10px] md:py-[0px] px-[10px] md:px-[20px] rounded-md border-[1px] mt-[10px]" key={index} style={{borderColor:border_color}}>
                                     <div className="w-[90%]">
-                                        <p className="text-[12px] md:text-[15px] font-light">{project.title.length > 150?project.title.slice(0,150)+" .....":project.title}</p>
+                                        <p className="text-[12px] md:text-[15px] font-medium">{project.title.length > 150?project.title.slice(0,150)+" .....":project.title}</p>
                                         <p className="text-[12px] md:text-[15px] font-light">{project.created_at.slice(0,10)} | Rs. {project.min_budget} - Rs. {project.max_budget}</p>
                                     </div>
                                     <Dialog>
@@ -123,17 +123,17 @@ export default function Projects() {
                 }
                 <Dialog>
                     <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className={`w-[150px] h-[100%] justify-center rounded-md bg-[${normal_button_bg}] hover:bg-[${normal_hover_button_bg}]`} style={{color:button_text}}><p className="mx-auto pt-[8px] font-medium">Add New Project</p></div></DialogTrigger>
-                    <DialogContent className="w-[380px] sm:w-[550px] md:w-[700px] rounded-md px-[10px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
+                    <DialogContent className="w-[350px] sm:w-[550px] md:w-[700px] rounded-md px-[10px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
                         <DialogHeader>
-                            <DialogTitle>Host a New Project</DialogTitle>
-                            <DialogDescription className="h-[700px] flex flex-col">
-                                <Label htmlFor="email" className="mt-[20px] mb-[10px]">Title</Label>
+                            <DialogTitle style={{color:secondary_accent_text}}>Host a New Project</DialogTitle>
+                            <DialogDescription className="h-[500px] md:h-[700px] flex flex-col">
+                                <Label htmlFor="email" className="mt-[10px] md:mt-[20px] md:mb-[10px] mb-[5px] text-left px-[5px]">Title</Label>
                                 <Input onChange={(e) => setnewproject((prev) => ({ ...prev, title: e.target.value }))} />
-                                <Label htmlFor="email" className="mt-[20px] mb-[10px]">Minimum Bid Price</Label>
+                                <Label htmlFor="email" className="mt-[10px] md:mt-[20px] md:mb-[10px] mb-[5px] text-left px-[5px]">Minimum Bid</Label>
                                 <Input type="number" onChange={(e) => setnewproject((prev) => ({ ...prev, minbudget: e.target.value }))} />
-                                <Label htmlFor="email" className="mt-[20px] mb-[10px]">Maximum Bid Price</Label>
+                                <Label htmlFor="email" className="mt-[10px] md:mt-[20px] md:mb-[10px] mb-[5px] text-left px-[5px]">Maximum Bid</Label>
                                 <Input type="number" onChange={(e) => setnewproject((prev) => ({ ...prev, maxbudget: e.target.value }))} />
-                                <Label htmlFor="email" className="mt-[20px] mb-[10px]">Add Skills</Label>
+                                <Label htmlFor="email" className="mt-[10px] md:mt-[20px] md:mb-[10px] mb-[5px] text-left px-[5px]">Add Skills</Label>
                                 <Input value={skill} onChange={(e) => setskill(e.target.value)} onKeyDown={(e) => {
 
                                     if (e.key === 'Enter') {
@@ -149,14 +149,14 @@ export default function Projects() {
                                         setskill("")
                                     }
                                 }} />
-                                <span className="w-[100%] mt-[20px] max-h-[100px] flex">{
+                                <span className="w-[100%] mt-[10px] md:mt-[20px] grid grid-flow-row grid-cols-4 md:grid-cols-5 gap-2">{
                                     skills.map((skill, index) => {
                                         return (
-                                            <span key={index} className="bg-[#e8e8e8] p-[10px] mr-[10px] rounded-md font-medium flex items-center"><span className="pr-[10px]">{skill}</span><ImCross className="w-[10px] h-[10px] cursor-pointer font-bold" onClick={() => setskills((skills) => skills.filter((s) => s !== skill))} /></span>
+                                            <span key={index} className="px-[10px] md:px-[10px] py-[5px] rounded-md font-light flex items-center justify-between gap-2" style={{backgroundColor:primary_background_color}}><span className="md:pr-[10px] overflow-hidden">{skill}</span><ImCross className="w-[20px] h-[10px] cursor-pointer" onClick={() => setskills((skills) => skills.filter((s) => s !== skill))} fontWeight={300}/></span>
                                         )
                                     })
                                 }</span>
-                                <Label htmlFor="email" className="mt-[20px] mb-[10px]">Add Categorie</Label>
+                                <Label htmlFor="email" className="mt-[10px] md:mt-[20px] md:mb-[10px] mb-[5px] text-left px-[5px]">Add Categorie</Label>
                                 <Input value={category} onChange={(e) => setcategory(e.target.value)} onKeyDown={(e) => {
                                     if (e.key === 'Enter') {
                                         if (categories.length >= 5) {
@@ -171,15 +171,15 @@ export default function Projects() {
                                         setcategory("")
                                     }
                                 }} />
-                                <span className="w-[100%] mt-[20px] max-h-[100px] flex">{
+                                <span className="w-[100%] mt-[10px] md:mt-[20px] max-h-[100px] grid grid-flow-row grid-cols-4 md:grid-cols-3 gap-2">{
                                     categories.map((catg, index) => {
                                         return (
-                                            <span key={index} className="bg-[#e8e8e8] p-[10px] mr-[10px] rounded-md font-medium flex items-center"><span className="pr-[10px]">{catg}</span><ImCross className="w-[10px] h-[10px] cursor-pointer font-bold" onClick={() => setcategories((categories) => categories.filter((s) => s !== catg))} /></span>
+                                            <span key={index} className="px-[10px] md:px-[10px] py-[5px] md:p-[10px] mr-[10px] rounded-md flex items-center justify-between gap-2" style={{backgroundColor:primary_background_color}}><span className="md:pr-[10px] overflow-hidden">{catg}</span><ImCross className="w-[20px] h-[10px] cursor-pointer" onClick={() => setcategories((categories) => categories.filter((s) => s !== catg))} fontWeight={300}/></span>
                                         )
                                     })
                                 }</span>
-                                <Label htmlFor="email" className="mt-[20px] mb-[10px]">Description</Label>
-                                <Textarea className="w-[100%] h-[200px]" onChange={(e) => setnewproject((prev) => ({ ...prev, description: e.target.value }))} />
+                                <Label htmlFor="email" className="mt-[10px] md:mt-[20px] md:mb-[10px] mb-[5px] text-left px-[5px]">Description</Label>
+                                <Textarea className="w-[100%] h-[200px]" onChange={(e) => setnewproject((prev) => ({ ...prev, description: e.target.value }))}/>
                             </DialogDescription>
                         </DialogHeader>
                         <DialogFooter>

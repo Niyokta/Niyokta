@@ -6,7 +6,7 @@ import { box_shadow, div_color, secondary_accent_text } from "@/resource/theme";
 export default function ProjectsMap({ projects }: { projects: ProjectModel[] }) {
     return (
         <div className="mt-[20px] text-[12px] md:text-[17px] md:mt-[50px] rounded-md" style={{backgroundColor:div_color,boxShadow:box_shadow}}>
-            <div className="w-full h-[50px] border-b-[1px] border-black flex items-center font-bold text-[14px]" style={{color:secondary_accent_text}}>
+            <div className="w-full h-[50px] border-b-[1px] border-black md:flex items-center font-bold text-[14px] hidden " style={{color:secondary_accent_text}}>
                 <p className="w-[30%] md:w-[15%] border-r-[1px] border-black text-center">Hosted On</p>
                 <p className="w-[70%] md:w-[55%]  md:border-r-[1px] border-black text-center">Project Title</p>
                 <p className="w-[15%] border-r-[1px] border-black text-center hidden md:block">Status</p>
@@ -15,9 +15,9 @@ export default function ProjectsMap({ projects }: { projects: ProjectModel[] }) 
             {
                 projects.map((project, index) => {
                     return (
-                        <div key={index} className="w-full min-h-[50px] border-b-[1px] border-black  flex items-center">
-                            <p className="w-[30%] md:w-[15%]  border-r-[1px] border-black text-center">{`${project.created_at?.slice(8, 10)} / ${project.created_at?.slice(5, 7)} / ${project.created_at?.slice(0, 4)}`}</p>
-                            <p className="w-[70%] md:w-[55%] md:border-r-[1px] border-black md:text-justify px-[10px] md:px-[20px]">{project.title.slice(0,80)}</p>
+                        <div key={index} className="w-full min-h-[50px] border-b-[1px] border-black  flex md:items-center md:flex-row flex-col p-[10px] md:p-[0px]">
+                            <p className="w-full md:w-[15%] md:border-r-[1px] border-black md:text-center font-medium text-[10px]" style={{color:secondary_accent_text}}>{`${project.created_at?.slice(8, 10)} / ${project.created_at?.slice(5, 7)} / ${project.created_at?.slice(0, 4)}`}</p>
+                            <p className="w-full md:w-[55%] md:border-r-[1px] border-black md:text-justify md:px-[20px]">{project.title.slice(0,80)}</p>
                             <p className="w-[15%] border-r-[1px] border-black text-center font-bold capitalize hidden md:block" style={{color:project.status==="completed"?"green":"red"}}>{project.status}</p>
                             <p className="w-[15%] text-center hidden md:block">₹ {Number(project.min_budget).toLocaleString('en-US')} - ₹ {Number(project.max_budget).toLocaleString('en-US')}</p>
                         </div>
