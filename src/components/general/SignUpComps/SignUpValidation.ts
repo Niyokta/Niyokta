@@ -21,7 +21,7 @@ export default function validate(usercreds:userCreds,socials:Socials){
     const linkedin=socials.linkedin;
     const github=socials.github;
     const x=socials.x;
-
+    
     if(username.length < 8) return "Username should be of atleast 8 characters";
     if(!email.includes("@") || !email.includes(".com")) return "Invalid Email ID";
     const checkpassword=checkPassword(password);
@@ -63,3 +63,4 @@ function checkPassword(password:string){
     if(!containsspecial) return "Password must contain a special character";
     return "Ok";
 }
+

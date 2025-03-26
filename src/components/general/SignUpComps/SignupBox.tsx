@@ -32,7 +32,7 @@ export default function SignupBox() {
 
     const handlesignup = async () => {
         setloading(true)
-        const validation=validateCredentials(usercreds.username,usercreds.password,usercreds.cnfpassword,usercreds.birth_date,usercreds.email,usercreds.country);
+        const validation=validateCredentials(usercreds.username,usercreds.password,usercreds.cnfpassword,usercreds.birth_date,usercreds.email,usercreds.country,usercreds.phoneNumber);
         if(validation.status!=200){
             toast({title:validation.message});
             setloading(false);

@@ -53,5 +53,15 @@ function checkEmailValidity(email:string):boolean{
     }
     return true;
 }
+function checkPhoneNumber(phoneNumber:string){
+    const temp="0123456789";
+    if(phoneNumber.length!=10) return false;
 
-export {checkCountryValidity,checkDOB,checkEmailValidity,checkPasswordConfirmation,checkPasswordValidity,checkUsernameValidity}
+    for(const char of phoneNumber){
+        if(!temp.includes(char)){
+            return false;
+        }
+    }
+    return true;
+}
+export {checkCountryValidity,checkDOB,checkEmailValidity,checkPasswordConfirmation,checkPasswordValidity,checkUsernameValidity,checkPhoneNumber}

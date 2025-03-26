@@ -1,11 +1,11 @@
-import { checkCountryValidity, checkDOB, checkEmailValidity, checkPasswordConfirmation, checkPasswordValidity, checkUsernameValidity } from "./fieldValidations";
+import { checkCountryValidity, checkDOB, checkEmailValidity, checkPasswordConfirmation, checkPasswordValidity, checkPhoneNumber, checkUsernameValidity } from "./fieldValidations";
 
 type ValidatorReturnType={
     status:number,
     message:string
 }
 
-export default function validateCredentials(username:string,password:string,confirmpassword:string,DOB:string,email:string,country:string):ValidatorReturnType{
+export default function validateCredentials(username:string,password:string,confirmpassword:string,DOB:string,email:string,country:string,phoneNumber:string):ValidatorReturnType{
     let status=200;
     let message="All good to go";
     if(checkUsernameValidity(username)==false){
@@ -32,7 +32,10 @@ export default function validateCredentials(username:string,password:string,conf
         status=400;
         message="Incorrect format for DOB";
     }
-
+    else if(checkPhoneNumber(phoneNumber)==false){
+        status=400;
+        message="Invalid Phone Number"
+    }
     return {
         status:status,
         message:message
