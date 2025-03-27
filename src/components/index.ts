@@ -13,6 +13,7 @@ import UserCard from "./general/UserCard";
 import UserProfile from "./general/UserProfileComps/UserProfile";
 import Footer from "./general/ProtectedFooter/Footer";
 import DashboardComponent from "./Dashboard/DashboardComponent";
+import PlaceBidComponent from "./general/PlaceBid/PlaceBid";
 export {LoginBox,
     SignupBox,
     Navbar,
@@ -27,5 +28,6 @@ export {LoginBox,
     UserCard,
     UserProfile,
     Footer,
-    DashboardComponent
+    DashboardComponent,
+    PlaceBidComponent
 };

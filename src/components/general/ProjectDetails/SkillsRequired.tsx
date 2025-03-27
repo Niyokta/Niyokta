@@ -3,7 +3,7 @@ import React from "react";
 
 export default function SkillsRequired({skills}:{skills:string[]}){
     return(
-        <div className="w-full min-h-[70px] items-center text-[12px] md:text-[15px] grid grid-flow-row gap-3 grid-cols-2 md:grid-cols-5 mt-[10px] md:mt-[0px]">
+        <div className="w-full min-h-[70px] items-center text-[12px] md:text-[15px] grid grid-flow-row gap-3 grid-cols-2 md:grid-cols-7 mt-[10px] md:mt-[0px]">
             {
                 skills.map((skill,index)=>{
                     return(
