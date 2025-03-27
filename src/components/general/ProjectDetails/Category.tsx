@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Category({categories}:{categories:string[]}){
     return(
-        <div className="w-full min-h-[70px] items-center text-[12px] md:text-[15px] grid gap-3 grid-flow-row grid-cols-2 md:grid-cols-5">
+        <div className="w-full min-h-[70px] items-center text-[12px] md:text-[15px] grid gap-3 grid-flow-row grid-cols-2 md:grid-cols-6">
             {
                 categories.map((category,index)=>{
                     return(
