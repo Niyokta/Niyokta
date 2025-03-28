@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/dialog"
 import { useAppSelector,useAppDispatch } from "@/lib/reduxHooks";
 import { addeducation, removeeducation } from "@/lib/features/userdetails";
-import { border_color, box_shadow, button_text, div_color, normal_button_bg, normal_hover_button_bg, text_color } from "@/resource/theme";
+import { border_color, box_shadow, button_text, div_color, navbar_background, normal_button_bg, normal_hover_button_bg, text_color } from "@/resource/theme";
 export default function Education() {
     const dispatch=useAppDispatch()
     const { toast } = useToast();
@@ -120,7 +120,7 @@ export default function Education() {
                     )
                 }
                 <Dialog>
-                    <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className={`w-[150px] h-[100%] justify-center bg-[${normal_button_bg}] hover:bg-[${normal_hover_button_bg}] text-[${button_text}] rounded-md`}><p className="mx-auto pt-[8px] font-medium">Add Education</p></div></DialogTrigger>
+                    <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className={`w-[150px] h-[100%] justify-center bg-[#000000] hover:bg-[${normal_hover_button_bg}] text-[${button_text}] rounded-md`}><p className="mx-auto pt-[8px] font-medium">Add Education</p></div></DialogTrigger>
                     <DialogContent className="w-[350px] sm:w-[500px] rounded-md px-[10px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
                         <DialogHeader>
                             <DialogTitle>Add Education</DialogTitle>

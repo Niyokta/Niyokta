@@ -17,7 +17,7 @@ import {
     DialogClose
 } from "@/components/ui/dialog"
 import { useAppSelector } from "@/lib/reduxHooks";
-import { border_color, box_shadow, button_text, div_color, normal_button_bg, normal_hover_button_bg, primary_accent_text, primary_background_color, secondary_accent_text, text_color } from "@/resource/theme";
+import { border_color, box_shadow, button_text, div_color, navbar_background, normal_button_bg, normal_hover_button_bg, primary_accent_text, primary_background_color, secondary_accent_text, text_color } from "@/resource/theme";
 export default function Projects() {
     const userid=useAppSelector(state=>state.user.userid)
     const clientname=useAppSelector(state=>state.user.userName)
@@ -122,7 +122,7 @@ export default function Projects() {
                     )
                 }
                 <Dialog>
-                    <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className={`w-[150px] h-[100%] justify-center rounded-md bg-[${normal_button_bg}] hover:bg-[${normal_hover_button_bg}]`} style={{color:button_text}}><p className="mx-auto pt-[8px] font-medium">Add New Project</p></div></DialogTrigger>
+                    <DialogTrigger className="w-[100%] mx-auto h-[40px] flex justify-end px-[20px] mt-[20px]"><div className={`w-[150px] h-[100%] justify-center rounded-md bg-[${normal_button_bg}] hover:bg-[${normal_hover_button_bg}]`} style={{backgroundColor:navbar_background,color:button_text}}><p className="mx-auto pt-[8px] font-medium" >Add New Project</p></div></DialogTrigger>
                     <DialogContent className="w-[350px] sm:w-[550px] md:w-[700px] rounded-md px-[10px]" style={{backgroundColor:div_color,borderColor:border_color,color:text_color}}>
                         <DialogHeader>
                             <DialogTitle style={{color:secondary_accent_text}}>Host a New Project</DialogTitle>
@@ -179,7 +179,7 @@ export default function Projects() {
                                     })
                                 }</span>
                                 <Label htmlFor="email" className="mt-[10px] md:mt-[20px] md:mb-[10px] mb-[5px] text-left px-[5px]">Description</Label>
-                                <Textarea className="w-[100%] h-[200px]" onChange={(e) => setnewproject((prev) => ({ ...prev, description: e.target.value }))}/>
+                                <Textarea className="w-[100%] h-[200px]" onChange={(e) => setnewproject((prev) => ({ ...prev, description: e.target.value }))} />
                             </DialogDescription>
                         </DialogHeader>
                         <DialogFooter>
