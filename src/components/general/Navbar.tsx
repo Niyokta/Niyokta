@@ -13,7 +13,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { useAppDispatch } from "@/lib/reduxHooks";
 import { loadingstate } from "@/lib/features/userdetails";
-import { border_color, box_shadow, div_color, primary_accent_text, primary_background_color, text_color } from "@/resource/theme";
+import { border_color, box_shadow, div_color, navbar_background, navbar_logo_color, navbar_text_color, primary_accent_text, primary_background_color, text_color } from "@/resource/theme";
 export default function Navbar() {
     const dispatch=useAppDispatch();
     const {toast}=useToast();
@@ -34,9 +34,9 @@ export default function Navbar() {
     }
     
     return (
-            <div className="w-[100%] h-[60px] rounded-md flex justify-between px-[20px] items-center mt-[20px]" style={{ boxShadow: box_shadow,userSelect:'none',backgroundColor:div_color,color:text_color }}>
+            <div className="w-[100%] h-[60px] rounded-md flex justify-between px-[20px] items-center mt-[20px]" style={{ boxShadow: box_shadow,userSelect:'none',backgroundColor:navbar_background,color:navbar_text_color }}>
                 <ul>
-                    <li className="font-bold md:text-[25px]" style={{color:primary_accent_text}}>Niyokta</li>
+                    <li className="font-bold md:text-[25px]" style={{color:navbar_logo_color}}>Niyokta</li>
                 </ul>
                 <ul className="flex w-[70%] md:w-[20%] justify-around text-[12px] md:text-[17px] items-center font-medium">
                     <li onClick={() => router.push('/projects')} className="cursor-pointer underline underline-offset-2">Projects</li>
