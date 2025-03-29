@@ -36,15 +36,15 @@ export async function POST(request: Request) {
                 'content-type': 'application/json',
             },
             body: JSON.stringify({
-                freelancer_id:freelancer_id,
-                project_id:project_id,
-                bidding_price:bidding_price,
-                freelancer_name:freelancer_name,
+                freelancerID:freelancer_id,
+                projectID:project_id,
+                bidingPrice:bidding_price,
+                freelancerName:freelancer_name,
                 proposal:proposal,
-                project_title:project_title,
-                client_country:client_country,
-                client_name:client_name,
-                freelancer_rating:freelancer_rating
+                projectTitle:project_title,
+                clientCountry:client_country,
+                clientName:client_name,
+                freelancerRating:freelancer_rating
             })
         })
         const res = await response.json();
