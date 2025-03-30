@@ -10,7 +10,7 @@ export default function RecentProjects(){
     const topfive=sortedProjects.slice(0,5);
     return(
         <div className="md:mt-[50px]">
-            <p className="text-[15px] md:text-[30px] pt-[30px] font-bold md:text-center" style={{color:primary_accent_text}}>Recent Projects</p>
+            <p className="text-[15px] uppercase font-medium px-[10px]" style={{color:primary_accent_text}}>Recent Projects</p>
             {
                 username=="" ? <NoProjects/> : <ProjectsMap projects={topfive}/>
             }

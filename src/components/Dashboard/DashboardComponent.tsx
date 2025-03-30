@@ -8,12 +8,15 @@ import { useAppSelector } from "@/lib/reduxHooks";
 import { returnFullDate, returnMonthByNumber } from "@/helper/date";
 import { RefinedAnalyticsDataType } from "@/lib/types/AnalyticsData";
 import { useRef } from "react";
+import YearlyProjectAnalysis from "./YearlyProjectAnalysis";
+import MonthlyProjectAnalysis from "./MonthlyProjectAnalysis";
 export default function DashboardComponent() {
     const [loading, setloading] = React.useState({
         PostCharLoading: true,
         ProjectChartLoading: true,
         ProjectChartMonthlyLoading: true
     })
+    const [activeProjectAnalysis, setactiveProjectAnalysis] = React.useState<boolean>(true)
     const date = new Date();
     const currentyear = date.getFullYear()
     const currentMonth = date.getMonth() + 1;
@@ -99,20 +102,22 @@ export default function DashboardComponent() {
     return (
         <div className="w-full h-full">
             <div className="w-full hidden md:block">
-                <p className="text-[15px] font-medium px-[10px] uppercase">Monthly Project Analytics</p>
-                <div className="w-full h-[400px] flex justify-between my-[20px]">
-                    <div className="w-[100%] h-full rounded-md overflow-hidden" style={{ boxShadow: box_shadow }}>
-                        {loading.ProjectChartMonthlyLoading ? <ChartLoader /> : <CustomChart refinedData={refinedMonthlyData.current ? refinedMonthlyData.current : []} title={`${returnMonthByNumber(currentMonth)}`} />}
-                    </div>
+                <p className="text-[15px] font-medium uppercase px-[10px]">Project Analysis</p>
+                <div className="w-full flex justify-end">
+                    <select onChange={(e) => {
+                        setactiveProjectAnalysis(!activeProjectAnalysis)
+                    }} className="text-[15px] font-medium outline-none">
+                        <option value="Yearly Analysis">Yearly Project Analysis</option>
+                        <option value="Yearly Analysis">Monthly Project Analysis</option>
+                    </select>
                 </div>
-                <p className="text-[15px] font-medium px-[10px] uppercase">Yearly Project Analytics</p>
-                <div className="w-full h-[400px] flex justify-between my-[20px]">
-                    <div className="w-[100%] h-full rounded-md overflow-hidden" style={{ boxShadow: box_shadow }}>
-                        {loading.ProjectChartLoading ? <ChartLoader /> : <CustomChart refinedData={refinedData.current ? refinedData.current : []} title={`${currentyear}`} />}
-                    </div>
-                </div>
+                {
+                    activeProjectAnalysis ? <YearlyProjectAnalysis loading={loading.ProjectChartLoading} refinedData={refinedData.current ? refinedData.current : []} currentyear={currentyear} /> : <MonthlyProjectAnalysis loading={loading.ProjectChartMonthlyLoading} refinedData={refinedMonthlyData.current ? refinedMonthlyData.current : []} currentMonth={currentMonth} />
+                }
+
+
             </div>
-            <div className="w-full h-[200px] md:h-[750px]">
+            <div className="w-full h-[200px] md:h-[750px] md:hidden">
                 <video src="/images/welcome.mp4" className="w-full h-full" autoPlay muted></video>
             </div>
             <RecentProjects />

@@ -35,8 +35,8 @@ export default function CustomChart({refinedData,title}:{refinedData:RefinedAnal
                     refinedData.map((data, index) => {
                         return (
                             <div className={`h-full w-[3%] mx-[5px] flex flex-col justify-end`} key={index}>
-                                <p className="text-center text-[12px]">{data.yCount}</p>
-                                <div className="rounded-sm" style={{ height: (chartScale * data.yCount)+10,backgroundColor:navbar_background }} title={data.xLabel.toString()}>
+                                {/* <p className="text-center text-[12px]">{data.yCount}</p> */}
+                                <div className="rounded-sm" style={{ height: (chartScale * data.yCount)+10,backgroundColor:navbar_background }} title={`${data.xLabel.toString()} - ${data.yCount}`}>
                                 </div>
                             </div>
                         )
