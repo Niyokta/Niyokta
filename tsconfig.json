@@ -19,7 +19,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "target": "ES2015"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/(Protected)/dashboard", "src/app/auth/signin", "src/app/auth/signup"],
   "exclude": ["node_modules"]
