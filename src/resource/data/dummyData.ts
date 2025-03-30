@@ -1,0 +1,22 @@
+export const dummyChartData=[
+    {
+        year:"2001",
+        posts:5
+    },
+    {
+        year:"2002",
+        posts:3
+    },
+    {
+        year:"2003",
+        posts:6
+    },
+    {
+        year:"2004",
+        posts:9
+    },
+    {
+        year:"2005",
+        posts:2
+    }
+]
