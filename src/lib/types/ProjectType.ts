@@ -17,6 +17,7 @@ export type ProjectModel={
     proposal_count:number|null,
     completed_at:string|null,
     payment_status:string|null,
+    bids:any[]
 }
 
 export const DummyProject={
@@ -38,4 +39,5 @@ export const DummyProject={
     proposal_count:0,
     completed_at:"",
     payment_status:"",
+    bids:[]
 }
