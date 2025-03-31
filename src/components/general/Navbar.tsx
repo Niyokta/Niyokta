@@ -50,7 +50,7 @@ export default function Navbar() {
                                 <DropdownMenuItem className="cursor-pointer" onClick={()=>{dispatch(loadingstate(true));router.push('/profile')}}>Profile</DropdownMenuItem>
                                 <DropdownMenuItem className="cursor-pointer" onClick={()=>router.push('/dashboard')}>Dashboard</DropdownMenuItem>
                                 <DropdownMenuItem>Premium Membership</DropdownMenuItem>
-                                <DropdownMenuItem className="cursor-pointer" >Bid Insights</DropdownMenuItem>
+                                <DropdownMenuItem className="cursor-pointer" onClick={()=> router.push("/bid-insight")} >Bid Insights</DropdownMenuItem>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuLabel>Accounts</DropdownMenuLabel>
                                 <DropdownMenuSeparator />

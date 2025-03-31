@@ -1,9 +1,6 @@
 'use client'
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import RecentProjects from "./RecentProjects";
-import CustomChart from "./CustomChart";
-import { box_shadow } from "@/resource/theme";
-import ChartLoader from "./ChartLoader";
 import { useAppSelector } from "@/lib/reduxHooks";
 import { returnFullDate, returnMonthByNumber } from "@/helper/date";
 import { RefinedAnalyticsDataType } from "@/lib/types/AnalyticsData";
@@ -16,6 +13,7 @@ export default function DashboardComponent() {
         ProjectChartLoading: true,
         ProjectChartMonthlyLoading: true
     })
+
     const [activeProjectAnalysis, setactiveProjectAnalysis] = React.useState<boolean>(true)
     const date = new Date();
     const currentyear = date.getFullYear()
@@ -24,7 +22,22 @@ export default function DashboardComponent() {
     const refinedData = useRef<RefinedAnalyticsDataType[]>();
     const refinedMonthlyData = useRef<RefinedAnalyticsDataType[]>();
     const projects = useAppSelector(state => state.user.projects);
-
+    const [pieData, setpieData] = useState<{ completed: number, ongoing: number, pending: number }>({
+        ongoing: 0,
+        pending: 0,
+        completed: 0
+    })
+    function pieChartData() {
+        let completed = 0;
+        let ongoing = 0;
+        let pending = 0;
+        projects.map((project) => {
+            if (project.status === "pending") pending++;
+            else if (project.status === "completed") completed++;
+            else ongoing++;
+        })
+        setpieData({ ongoing: ongoing, completed: completed, pending: pending })
+    }
     function refineDataYearly() {
 
         const projectMap = new Map<number, number>();
@@ -96,13 +109,14 @@ export default function DashboardComponent() {
         setloading(() => ({ ...loading, ProjectChartLoading: false, ProjectChartMonthlyLoading: false }))
     }
     useEffect(() => {
+        pieChartData()
         refineDataYearly()
         refineDataMonthly()
     }, [])
     return (
         <div className="w-full h-full">
+            <p className="text-[15px] font-medium uppercase px-[10px]">Project Analysis</p>
             <div className="w-full hidden md:block">
-                <p className="text-[15px] font-medium uppercase px-[10px]">Project Analysis</p>
                 <div className="w-full flex justify-end">
                     <select onChange={(e) => {
                         setactiveProjectAnalysis(!activeProjectAnalysis)
@@ -114,9 +128,8 @@ export default function DashboardComponent() {
                 {
                     activeProjectAnalysis ? <YearlyProjectAnalysis loading={loading.ProjectChartLoading} refinedData={refinedData.current ? refinedData.current : []} currentyear={currentyear} /> : <MonthlyProjectAnalysis loading={loading.ProjectChartMonthlyLoading} refinedData={refinedMonthlyData.current ? refinedMonthlyData.current : []} currentMonth={currentMonth} />
                 }
-
-
             </div>
+
             <div className="w-full h-[200px] md:h-[750px] md:hidden">
                 <video src="/images/welcome.mp4" className="w-full h-full" autoPlay muted></video>
             </div>
