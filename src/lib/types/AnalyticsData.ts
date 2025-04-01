@@ -1,4 +1,8 @@
 export type RefinedAnalyticsDataType={
-    xLabel:String,
-    yCount:any
+    month:String,
+    projects:number
+}
+
+export type RefinedAnalyticsDailyDataType={
+    
 }
