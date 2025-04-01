@@ -4,8 +4,6 @@ import Navbar from "./general/Navbar";
 import PersonalInfo from "./profilecomponents/PersonallInfo";
 import Education from "./profilecomponents/Education";
 import Experience from "./profilecomponents/Experience";
-import BidStats from "./BidInsight/BidStats";
-import AllBids from "./BidInsight/AllBids";
 import Projects from "./profilecomponents/Projects";
 import ListProjects from "./general/ListProjects";
 import AllProjectsLoader from "./general/AllProjectsLoader";
@@ -21,8 +19,6 @@ export {LoginBox,
     Projects,
     Experience,
     Education,
-    AllBids,
-    BidStats,
     ListProjects,
     AllProjectsLoader,
     UserCard,

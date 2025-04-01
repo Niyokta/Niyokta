@@ -1,12 +1,13 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import RecentProjects from "./RecentProjects";
 import { useAppSelector } from "@/lib/reduxHooks";
 import { returnFullDate, returnMonthByNumber } from "@/helper/date";
-import { RefinedAnalyticsDataType } from "@/lib/types/AnalyticsData";
+import { RefinedAnalyticsDailyDataType, RefinedAnalyticsDataType } from "@/lib/types/AnalyticsData";
 import { useRef } from "react";
-import YearlyProjectAnalysis from "./YearlyProjectAnalysis";
-import MonthlyProjectAnalysis from "./MonthlyProjectAnalysis";
+import { MonthlyProjectChart } from "./MonthlyProjectChart";
+import { DailyProjectChart } from "./DailyProjectChart";
+import { ProjectTypePieChart } from "./ProjectTypePieChart";
+import { AnnualCostSpending } from "./AnnualCostSpending";
 export default function DashboardComponent() {
     const [loading, setloading] = React.useState({
         PostCharLoading: true,
@@ -17,11 +18,13 @@ export default function DashboardComponent() {
     const [activeProjectAnalysis, setactiveProjectAnalysis] = React.useState<boolean>(true)
     const date = new Date();
     const currentyear = date.getFullYear()
-    const currentMonth = date.getMonth() + 1;
-    const currentDay = date.getDate()
+    const currentMonth = date.getMonth()+1;
+    const currentDay = date.getDate();
     const refinedData = useRef<RefinedAnalyticsDataType[]>();
-    const refinedMonthlyData = useRef<RefinedAnalyticsDataType[]>();
+    const refineDailyData = useRef<RefinedAnalyticsDailyDataType[]>();
+    const refinedCostData=useRef<{month:String,spent:number,earned:number}[]>([])
     const projects = useAppSelector(state => state.user.projects);
+    const bids=useAppSelector(state=>state.user.bids)
     const [pieData, setpieData] = useState<{ completed: number, ongoing: number, pending: number }>({
         ongoing: 0,
         pending: 0,
@@ -66,8 +69,8 @@ export default function DashboardComponent() {
         const refined: RefinedAnalyticsDataType[] = [];
         sortedMap.forEach((value, key) => {
             const temp = {
-                xLabel: returnMonthByNumber(key),
-                yCount: Number(value)
+                month: returnMonthByNumber(key),
+                projects: value
             }
             refined.push(temp);
         })
@@ -97,43 +100,91 @@ export default function DashboardComponent() {
 
         const sortedMap = new Map([...projectMap.entries()].sort((a, b) => a[0] - b[0]));
 
-        const refined: RefinedAnalyticsDataType[] = [];
+        const refined: RefinedAnalyticsDailyDataType[] = [];
         sortedMap.forEach((value, key) => {
             const temp = {
-                xLabel: returnFullDate(key, currentMonth, currentyear),
-                yCount: Number(value)
+                date: returnFullDate(key, currentMonth, currentyear),
+                projects: value
             }
             refined.push(temp);
         })
-        refinedMonthlyData.current = refined;
+        refineDailyData.current = refined;
         setloading(() => ({ ...loading, ProjectChartLoading: false, ProjectChartMonthlyLoading: false }))
+    }
+    function annualCostAnalysis(){
+        const spentMap=new Map<number,number>();
+        const earnedMap=new Map<number,number>();
+
+        let temp=1;
+        while(temp <= currentMonth){
+            spentMap.set(temp,0);
+            earnedMap.set(temp,0);
+            temp=temp+1;
+        }
+        projects.map((project)=>{
+            const projectdate=new Date(project.created_at);
+            const projectyear=projectdate.getFullYear();
+            const projectMonth=projectdate.getMonth()+1;
+            if(projectyear===currentyear){
+                const spenttilldate=spentMap.get(projectMonth)
+                if(spenttilldate===undefined)spentMap.set(projectMonth,project.closing_price);
+                else spentMap.set(projectMonth,spenttilldate+project.closing_price);
+            }
+        })
+        bids.map((bid)=>{
+            const biddate=new Date(bid.submitted_at);
+            const bidyear=biddate.getFullYear();
+            const bidmonth=biddate.getMonth()+1;
+            if(bidyear===currentyear && bid.status==="completed"){
+                const earnedtilldate=earnedMap.get(bidmonth);
+                if(earnedtilldate===undefined) earnedMap.set(bidmonth,Number(bid.bidding_price));
+                else earnedMap.set(bidmonth,earnedtilldate+Number(bid.bidding_price));
+            }
+        })
+        const refinedData:{month:String,
+            spent:number,
+            earned:number}[]=[];
+
+        for(let i=1;i<=currentMonth;i++){
+            const earned=earnedMap.get(i);
+            const spent=spentMap.get(i);
+            const month=returnMonthByNumber(i);
+            if(earned!=undefined && spent!=undefined){
+                refinedData.push({
+                    month:month,
+                    earned:earned,
+                    spent:spent,
+                })
+            }
+        }
+        refinedCostData.current=refinedData
     }
     useEffect(() => {
         pieChartData()
+        annualCostAnalysis();
         refineDataYearly()
         refineDataMonthly()
     }, [])
     return (
         <div className="w-full h-full">
             <p className="text-[15px] font-medium uppercase px-[10px]">Project Analysis</p>
-            <div className="w-full hidden md:block">
-                <div className="w-full flex justify-end">
+            <div className="w-full flex my-[20px] justify-between">
+                <div className="w-[49%]"><ProjectTypePieChart ongoing={pieData.ongoing} pending={pieData.pending} completed={pieData.completed}/></div>
+                <div className="w-[49%]"><AnnualCostSpending chartData={refinedCostData.current?refinedCostData.current:[]}/></div>
+            </div>
+            <div className="w-full">
+                <div className="w-full flex justify-end py-[10px]">
                     <select onChange={(e) => {
                         setactiveProjectAnalysis(!activeProjectAnalysis)
                     }} className="text-[15px] font-medium outline-none">
-                        <option value="Yearly Analysis">Yearly Project Analysis</option>
                         <option value="Yearly Analysis">Monthly Project Analysis</option>
+                        <option value="Yearly Analysis">Daily Project Analysis</option>
                     </select>
                 </div>
                 {
-                    activeProjectAnalysis ? <YearlyProjectAnalysis loading={loading.ProjectChartLoading} refinedData={refinedData.current ? refinedData.current : []} currentyear={currentyear} /> : <MonthlyProjectAnalysis loading={loading.ProjectChartMonthlyLoading} refinedData={refinedMonthlyData.current ? refinedMonthlyData.current : []} currentMonth={currentMonth} />
+                    activeProjectAnalysis ? <MonthlyProjectChart chartData={refinedData.current?refinedData.current:[]}/> : <DailyProjectChart chartData={refineDailyData.current?refineDailyData.current:[]}/>
                 }
             </div>
-
-            <div className="w-full h-[200px] md:h-[750px] md:hidden">
-                <video src="/images/welcome.mp4" className="w-full h-full" autoPlay muted></video>
-            </div>
-            <RecentProjects />
         </div>
     )
 }
