@@ -106,7 +106,7 @@ export function ProjectTypePieChart({ongoing,completed,pending}:{ongoing:number,
         <ChartContainer
           id={id}
           config={chartConfig}
-          className="mx-auto aspect-square w-full max-w-[300px] h-[400px]"
+          className="mx-auto aspect-square w-full max-w-[400px] h-[400px]"
         >
           <PieChart>
             <ChartTooltip

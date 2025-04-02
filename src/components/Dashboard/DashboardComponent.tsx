@@ -26,7 +26,7 @@ export default function DashboardComponent() {
     const refinedCostData=useRef<{month:String,spent:number,earned:number}[]>([])
     const projects = useAppSelector(state => state.user.projects);
     const bids=useAppSelector(state=>state.user.bids)
-    const revenue=useRef<number>(0);
+    const [revenue,setrevenue]=useState<number>(0);
     const rating=useAppSelector(state=>state.user.freelancer_rating)
     const [pieData, setpieData] = useState<{ completed: number, ongoing: number, pending: number }>({
         ongoing: 0,
@@ -128,7 +128,7 @@ export default function DashboardComponent() {
             const projectdate=new Date(project.created_at);
             const projectyear=projectdate.getFullYear();
             const projectMonth=projectdate.getMonth()+1;
-            if(projectyear===currentyear){
+            if(projectyear===currentyear && project.status==="completed"){
                 const spenttilldate=spentMap.get(projectMonth)
                 if(spenttilldate===undefined)spentMap.set(projectMonth,project.closing_price);
                 else spentMap.set(projectMonth,spenttilldate+project.closing_price);
@@ -138,7 +138,7 @@ export default function DashboardComponent() {
             const biddate=new Date(bid.submitted_at);
             const bidyear=biddate.getFullYear();
             const bidmonth=biddate.getMonth()+1;
-            if(bidyear===currentyear && bid.status==="completed"){
+            if(bidyear===currentyear && bid.status==="accepted"){
                 const earnedtilldate=earnedMap.get(bidmonth);
                 if(earnedtilldate===undefined) earnedMap.set(bidmonth,Number(bid.bidding_price));
                 else earnedMap.set(bidmonth,earnedtilldate+Number(bid.bidding_price));
@@ -153,7 +153,7 @@ export default function DashboardComponent() {
             const spent=spentMap.get(i);
             const month=returnMonthByNumber(i);
             if(earned!=undefined && spent!=undefined){
-                revenue.current=revenue.current+earned;
+                setrevenue(revenue+earned)
                 refinedData.push({
                     month:month,
                     earned:earned,
@@ -172,16 +172,16 @@ export default function DashboardComponent() {
     return (
         <div className="w-full h-full">
             <p className="text-[15px] font-medium uppercase px-[10px]">Project Analysis</p>
-            <DisplayStats projects={projects.length} bids={bids.length} revenue={revenue.current} rating={rating}/>
-            <div className="w-full flex my-[20px] justify-between">
-                <div className="w-[49%]"><ProjectTypePieChart ongoing={pieData.ongoing} pending={pieData.pending} completed={pieData.completed}/></div>
-                <div className="w-[49%]"><AnnualCostSpending chartData={refinedCostData.current?refinedCostData.current:[]}/></div>
+            <DisplayStats projects={projects.length} bids={bids.length} revenue={revenue} rating={rating}/>
+            <div className="w-full flex flex-col md:flex-row my-[20px] justify-between">
+                <div className="md:w-[49%]"><ProjectTypePieChart ongoing={pieData.ongoing} pending={pieData.pending} completed={pieData.completed}/></div>
+                <div className="md:w-[49%] mt-[20px] md:mt-[0px]"><AnnualCostSpending chartData={refinedCostData.current?refinedCostData.current:[]}/></div>
             </div>
             <div className="w-full">
                 <div className="w-full flex justify-end py-[10px]">
                     <select onChange={(e) => {
                         setactiveProjectAnalysis(!activeProjectAnalysis)
-                    }} className="text-[15px] font-medium outline-none">
+                    }} className="text-[12px] md:text-[15px] font-medium outline-none">
                         <option value="Yearly Analysis">Monthly Project Analysis</option>
                         <option value="Yearly Analysis">Daily Project Analysis</option>
                     </select>

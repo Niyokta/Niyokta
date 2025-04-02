@@ -38,7 +38,7 @@ export default function BidInsight() {
                     totalbidmap.set(bidmonthname, bidstillnow + 1);
                     if (bid.status === "accepted") {
                         const acceptedtillnow = acceptedbidmap.get(bidmonthname)
-                        if(acceptedtillnow){
+                        if(acceptedtillnow!=undefined){
                             acceptedbidmap.set(bidmonthname, acceptedtillnow + 1) 
                         }
                     }
