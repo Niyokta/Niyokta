@@ -21,11 +21,11 @@ import { returnMonthByNumber } from "@/helper/date";
 const chartConfig = {
   total: {
     label: "Total",
-    color: "hsl(var(--chart-4))",
+    color: "hsl(var(--chart-2))",
   },
   accepted: {
     label: "Accepted",
-    color: "hsl(var(--chart-2))",
+    color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
 
