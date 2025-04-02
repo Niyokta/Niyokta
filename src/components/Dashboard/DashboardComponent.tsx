@@ -8,6 +8,7 @@ import { MonthlyProjectChart } from "./MonthlyProjectChart";
 import { DailyProjectChart } from "./DailyProjectChart";
 import { ProjectTypePieChart } from "./ProjectTypePieChart";
 import { AnnualCostSpending } from "./AnnualCostSpending";
+import DisplayStats from "./DisplayStats";
 export default function DashboardComponent() {
     const [loading, setloading] = React.useState({
         PostCharLoading: true,
@@ -25,6 +26,8 @@ export default function DashboardComponent() {
     const refinedCostData=useRef<{month:String,spent:number,earned:number}[]>([])
     const projects = useAppSelector(state => state.user.projects);
     const bids=useAppSelector(state=>state.user.bids)
+    const revenue=useRef<number>(0);
+    const rating=useAppSelector(state=>state.user.freelancer_rating)
     const [pieData, setpieData] = useState<{ completed: number, ongoing: number, pending: number }>({
         ongoing: 0,
         pending: 0,
@@ -150,6 +153,7 @@ export default function DashboardComponent() {
             const spent=spentMap.get(i);
             const month=returnMonthByNumber(i);
             if(earned!=undefined && spent!=undefined){
+                revenue.current=revenue.current+earned;
                 refinedData.push({
                     month:month,
                     earned:earned,
@@ -168,6 +172,7 @@ export default function DashboardComponent() {
     return (
         <div className="w-full h-full">
             <p className="text-[15px] font-medium uppercase px-[10px]">Project Analysis</p>
+            <DisplayStats projects={projects.length} bids={bids.length} revenue={revenue.current} rating={rating}/>
             <div className="w-full flex my-[20px] justify-between">
                 <div className="w-[49%]"><ProjectTypePieChart ongoing={pieData.ongoing} pending={pieData.pending} completed={pieData.completed}/></div>
                 <div className="w-[49%]"><AnnualCostSpending chartData={refinedCostData.current?refinedCostData.current:[]}/></div>

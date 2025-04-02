@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { primary_accent_text, secondary_accent_text } from "@/resource/theme";
 import { useToast } from "@/hooks/use-toast";
 import { useAppSelector } from "@/lib/reduxHooks";
+import { useRouter } from "next/navigation";
 
 type BidDetailsType = {
     proposal: string,
@@ -15,7 +16,7 @@ type BidDetailsType = {
 
 export default function PlaceBidComponent({ min, max, projectId, projectTitle, clientCountry, clientName }: { min: string, max: string, projectId: number, projectTitle: string, clientCountry: string, clientName: string }) {
     const { toast } = useToast();
-
+    const router=useRouter()
     const [biddetail, setbiddetail] = React.useState<BidDetailsType>({
         proposal: "",
         wordcount: 0,
@@ -30,17 +31,6 @@ export default function PlaceBidComponent({ min, max, projectId, projectTitle, c
     const freelancerRating = useAppSelector(state => state.user.freelancer_rating);
     async function handleplacebid() {
 
-        /* to give in body
-        freelancer_id
-        project_id
-        bidding_price
-        freelancer_name
-        proposal
-        project_title
-        client_country
-        client_name
-        freelancer_rating
-        */
         if (errors.errorInPrice) {
             toast({ title: "Invalid Bidding Price Provided" })
         }
@@ -64,7 +54,10 @@ export default function PlaceBidComponent({ min, max, projectId, projectTitle, c
                 })
             })
                 .then((res) => res.json())
-                .then((res) => toast({ title: res.message }))
+                .then((res) => {
+                    toast({ title: res.message })
+                    router.replace("/bid-insight")
+                })
         }
         catch (err) {
             if (err instanceof Error) {
