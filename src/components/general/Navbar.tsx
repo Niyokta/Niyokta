@@ -47,10 +47,11 @@ export default function Navbar() {
                             <DropdownMenuContent className="mt-[30px] md:mr-[50px] md:w-[200px] border-[1px]" style={{backgroundColor:div_color,boxShadow:box_shadow,color:text_color,borderColor:border_color}}>
                                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem className="cursor-pointer" onClick={()=>{dispatch(loadingstate(true));router.push('/profile')}}>Profile</DropdownMenuItem>
+                                <DropdownMenuItem className="cursor-pointer" onClick={()=>{dispatch(loadingstate(true));router.push('/profile')}}>My Profile</DropdownMenuItem>
                                 <DropdownMenuItem className="cursor-pointer" onClick={()=>router.push('/dashboard')}>Dashboard</DropdownMenuItem>
-                                <DropdownMenuItem>Premium Membership</DropdownMenuItem>
+                                <DropdownMenuItem className="cursor-pointer" onClick={()=> router.push("/manage-projects")} >Manage Projects</DropdownMenuItem>
                                 <DropdownMenuItem className="cursor-pointer" onClick={()=> router.push("/bid-insight")} >Bid Insights</DropdownMenuItem>
+                                <DropdownMenuItem>Premium Membership</DropdownMenuItem>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuLabel>Accounts</DropdownMenuLabel>
                                 <DropdownMenuSeparator />
@@ -64,7 +65,6 @@ export default function Navbar() {
                                 <DropdownMenuItem>Settings</DropdownMenuItem>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuLabel className="cursor-pointer font-medium" onClick={handlesignout}>Sign Out</DropdownMenuLabel>
-                                
                             </DropdownMenuContent>
                         </DropdownMenu>
 

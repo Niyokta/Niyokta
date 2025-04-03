@@ -6,7 +6,8 @@ import { useToast } from '@/hooks/use-toast';
 import ProjectFilter from '@/components/Projects/ProjectFilter';
 import { filterType } from '@/lib/types/FilterTypes';
 import ProjectCard from '@/components/Projects/ProjectCard';
-import { CgChevronDoubleLeft,CgChevronDoubleRight } from 'react-icons/cg';
+import { CgChevronDoubleLeft, CgChevronDoubleRight } from 'react-icons/cg';
+import { ScrollText } from 'lucide-react';
 import { box_shadow, div_color } from '@/resource/theme';
 export default function Home() {
   const { toast } = useToast();
@@ -16,11 +17,11 @@ export default function Home() {
     skillFilter: [],
     categoryFilter: []
   })
-  const [index,setindex]=useState({
-    first:0,
-    last:8,
+  const [index, setindex] = useState({
+    first: 0,
+    last: 8,
   })
-  const totalProjects=useRef<number>(0)
+  const totalProjects = useRef<number>(0)
   React.useEffect(() => {
     async function fetchProjects() {
       try {
@@ -30,7 +31,7 @@ export default function Home() {
         });
         const data = await response.json();
         const projects = data.projects;
-        
+
         const filteredProjects = projects.filter((project: ProjectModel) => {
           const categoryMatch =
             filter.categoryFilter.length === 0 ||
@@ -45,11 +46,11 @@ export default function Home() {
             );
           return categoryMatch && skillMatch;
         })
-        const sortedProjects=filteredProjects.sort((a:any, b:any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+        const sortedProjects = filteredProjects.sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
         setProjects(sortedProjects)
-        setindex({first:0,last:8})
-        totalProjects.current=filteredProjects.length;
+        setindex({ first: 0, last: 8 })
+        totalProjects.current = filteredProjects.length;
         setloading(false)
 
       } catch (error) {
@@ -70,23 +71,28 @@ export default function Home() {
         <div className='w-[68%]'>
           {/* porject list  */}
           <div className='w-full grid auto-rows-min grid-cols-1 md:grid-cols-1 gap-5'>
-            {projects.slice(index.first, index.last).map((project, index) => (
-              <ProjectCard key={index} project_id={project.project_id} filter={[]} skills={project.skills_required} category={project.category} title={project.title} client_name={project.client_name} client_country={project.client_country} min_budget={project.min_budget} />
-            ))}
+            {projects.length === 0 ?
+              <div className='w-full flex flex-col items-center justify-center h-[300px]'>
+                <ScrollText className='w-[100px] h-[100px]' />
+                <p className='text-[15px] font-medium pt-[20px]'>No Projects To Show At This Moment</p>
+              </div>
+              : projects.slice(index.first, index.last).map((project, index) => (
+                <ProjectCard key={index} project_id={project.project_id} filter={[]} skills={project.skills_required} category={project.category} title={project.title} client_name={project.client_name} client_country={project.client_country} min_budget={project.min_budget} />
+              ))}
           </div>
           {/* pagination  */}
           <div className='w-[200px] h-[50px] mx-auto flex justify-between items-center mt-[50px]'>
             <CgChevronDoubleLeft className='w-[20px] h-[20px] cursor-pointer' onClick={() => {
-              if(index.first > 0){
-                setindex(()=>({...index,first:index.first-8,last:index.last-8}));
+              if (index.first > 0) {
+                setindex(() => ({ ...index, first: index.first - 8, last: index.last - 8 }));
               }
             }} />
-            <p className='px-[10px]  py-[2px] opacity-35 rounded-md font-bold' style={{ backgroundColor: div_color,boxShadow:box_shadow }}>{index.first/8===0?1:index.first/8}</p>
-            <p className='px-[10px]  py-[2px] rounded-md font-bold' style={{ backgroundColor: div_color,boxShadow:box_shadow }}>{index.last/8}</p>
-            <p className='px-[10px]  py-[2px] opacity-35 rounded-md font-bold' style={{ backgroundColor: div_color,boxShadow:box_shadow }}>{Math.ceil(totalProjects.current/8)}</p>
+            <p className='px-[10px] py-[2px] opacity-35 rounded-md font-bold' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>{index.first / 8 === 0 ? 1 : index.first / 8}</p>
+            <p className='px-[10px] py-[2px] rounded-md font-bold' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>{index.last / 8}</p>
+            <p className='px-[10px] py-[2px] opacity-35 rounded-md font-bold' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>{Math.ceil(totalProjects.current / 8) > 0 ? Math.ceil(totalProjects.current / 8) : 1}</p>
             <CgChevronDoubleRight className='w-[20px] h-[20px] cursor-pointer' onClick={() => {
-              if(index.first < totalProjects.current){
-                setindex(()=>({...index,first:index.first+8,last:index.last+8}));
+              if (index.first < totalProjects.current) {
+                setindex(() => ({ ...index, first: index.first + 8, last: index.last + 8 }));
               }
             }} />
           </div>
