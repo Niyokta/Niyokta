@@ -73,7 +73,7 @@ export default function BidInsight() {
             else {
                 totalBidMap.set(bidyear, prev + 1);
             }
-            if (bid.status === "accpeted") {
+            if (bid.status === "accepted") {
                 const prevAccepted = acceptedBidMap.get(bidyear);
                 if (prevAccepted === undefined) acceptedBidMap.set(bidyear,1);
                 else acceptedBidMap.set(bidyear,prevAccepted+1);

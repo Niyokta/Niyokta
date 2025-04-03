@@ -147,13 +147,14 @@ export default function DashboardComponent() {
         const refinedData:{month:String,
             spent:number,
             earned:number}[]=[];
-
+        let totalrevenue=0;
         for(let i=1;i<=currentMonth;i++){
             const earned=earnedMap.get(i);
             const spent=spentMap.get(i);
             const month=returnMonthByNumber(i);
+            
             if(earned!=undefined && spent!=undefined){
-                setrevenue(revenue+earned)
+                totalrevenue+=earned;
                 refinedData.push({
                     month:month,
                     earned:earned,
@@ -161,6 +162,7 @@ export default function DashboardComponent() {
                 })
             }
         }
+        setrevenue(totalrevenue)
         refinedCostData.current=refinedData
     }
     useEffect(() => {

@@ -6,10 +6,10 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import { BidType } from "@/lib/types/BidType"
+import { BidType, MyBidType } from "@/lib/types/BidType"
 import { PiHandWithdraw } from "react-icons/pi";
 import { GrUpdate } from "react-icons/gr";
-export function BidTable({ bids }: { bids: BidType[] }) {
+export function BidTable({ bids }: { bids: MyBidType[] }) {
     return (
         <Table>
             <TableHeader>
