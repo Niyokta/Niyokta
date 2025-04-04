@@ -3,13 +3,18 @@ import ListBids from '@/components/ManageProjects/ListBids'
 import ListProject from '@/components/ManageProjects/ListProject'
 import NoActiveProject from '@/components/ManageProjects/NoActiveProject'
 import SelectProject from '@/components/ManageProjects/SelectProject'
+import { Button } from '@/components/ui/button'
 import { box_shadow, div_color } from '@/resource/theme'
 import React from 'react'
 
 export default function ManageProjects() {
   const [activeProjectId, setactiveProjectId] = React.useState<number | null>(null)
   return (
-    <div className='w-full'>
+    <div className='w-full pt-[30px]'>
+      <div className='w-full flex justify-end'>
+        <Button className='font-bold'>Create New Project</Button>
+      </div>
+      <p className='text-[15px] font-medium uppercase px-[10px]'>Your projects</p>
       <ListProject/>
       <p className='text-[15px] font-medium uppercase px-[10px] pt-[30px]'>Track bids on projects</p>
       <div className='w-full mt-[10px] rounded-md min-h-[500px] p-[20px]' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>
