@@ -32,7 +32,7 @@ export default function ListProject() {
                         <TableHead className="w-[10%] text-center">Bid Count</TableHead>
                         <TableHead className="w-[10%] text-center">Min. Price</TableHead>
                         <TableHead className="w-[10%] text-center">Max. Price</TableHead>
-                        <TableHead className="w-[5%] text-center">Remove</TableHead>
+                        <TableHead className="w-[5%] text-center">Delete</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
