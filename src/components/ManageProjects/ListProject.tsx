@@ -12,16 +12,36 @@ import {
 } from "@/components/ui/table"
 import { CgChevronDoubleLeft, CgChevronDoubleRight } from 'react-icons/cg';
 import { Trash } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 export default function ListProject() {
+    const {toast}=useToast()
     const projects = useAppSelector(state => state.user.projects)
     const sortedprojects=[...projects].sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    const [finalProjects,setfinalProjects]=React.useState(sortedprojects)
     const [indexing,setindex]=React.useState({
         first:0,
         last:8
     })
     const lastindex=projects.length
+
+    async function DeleteProject(id:number){
+        await fetch('/api/User/RemoveProject',{
+            method:'POST',
+            body:JSON.stringify({
+                projectID:id
+            })
+        })
+        .then((res)=>res.json())
+        .then((res)=>{
+            removeProjectFromTable(id);
+            toast({title:res.message,description:""});
+        })
+    }
+    function removeProjectFromTable(id:number){
+        setfinalProjects(finalProjects.filter(project=>project.project_id!=id))
+    }
     return (
-        projects.length > 0 ? <div className='w-full h-[500px] py-[20px] px-[40px] rounded-md mt-[10px]' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>
+        projects.length > 0 ? <div className='w-full h-[500px] py-[20px] px-[20px] rounded-md mt-[10px]' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>
             <Table>
                 <TableHeader>
                     <TableRow>
@@ -36,7 +56,7 @@ export default function ListProject() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {sortedprojects.slice(indexing.first,indexing.last).map((project, index) => {
+                    {finalProjects.slice(indexing.first,indexing.last).map((project, index) => {
                         const date = new Date(project.created_at);
                         const projectDate = date.getDate();
                         const projectMonth = date.getMonth() + 1;
@@ -52,7 +72,7 @@ export default function ListProject() {
                                 <TableCell className="w-[10%] text-center">{project.bids.length}</TableCell>
                                 <TableCell className="w-[10%] text-center">{`Rs. ${Number(project.min_budget).toLocaleString()}`}</TableCell>
                                 <TableCell className="w-[10%] text-center">{`Rs. ${Number(project.max_budget).toLocaleString()}`}</TableCell>
-                                <TableCell className="w-[5%] text-center cursor-pointer"><Trash className='mx-auto w-[15px] h-[15px]' color='red' /></TableCell>
+                                <TableCell className="w-[5%] text-center cursor-pointer"><Trash className='mx-auto w-[15px] h-[15px]' color='red' onClick={()=>DeleteProject(project.project_id)}/></TableCell>
                             </TableRow>
                         )
                     })}
@@ -68,9 +88,9 @@ export default function ListProject() {
                                 }}/>
                                 <p className='px-[10px] py-[2px] font-bold rounded-sm opacity-45' style={{backgroundColor:"inherit",boxShadow:box_shadow}}>{1}</p>
                                 <p className='px-[10px] py-[2px] font-bold rounded-sm' style={{backgroundColor:"inherit",boxShadow:box_shadow}}>{Math.ceil(indexing.last/8)}</p>
-                                <p className='px-[10px] py-[2px] font-bold rounded-sm opacity-45' style={{backgroundColor:"inherit",boxShadow:box_shadow}}>{lastindex/8===0 ? 1 : Math.ceil(lastindex/8)}</p>
+                                <p className='px-[10px] py-[2px] font-bold rounded-sm opacity-45' style={{backgroundColor:"inherit",boxShadow:box_shadow}}>{lastindex/8===0 ? 1 : Math.ceil(finalProjects.length/8)}</p>
                                 <CgChevronDoubleRight className='opacity-45 cursor-pointer' onClick={()=>{
-                                    if(lastindex > indexing.last){
+                                    if(finalProjects.length > indexing.last){
                                         setindex({first:indexing.first+8,last:indexing.last+8})
                                     }
                                 }}/>
