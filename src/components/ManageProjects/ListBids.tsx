@@ -17,6 +17,7 @@ import { convertRatingToStar } from '@/helper/textconversion';
 import { CircleCheckBig } from 'lucide-react';
 import { BadgeX } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import ReadProposal from './ReadProposal';
 export default function ListBids({ activeProjectId }: { activeProjectId: number | null }) {
     const { toast } = useToast();
     const projects = useAppSelector(state => state.user.projects);
@@ -88,7 +89,7 @@ export default function ListBids({ activeProjectId }: { activeProjectId: number 
                                 <TableCell className='w-[10%] text-center'>{bid.user.workingHours}</TableCell>
                                 <TableCell className='w-[10%] text-center text-[15px]'>{convertRatingToStar(bid.user.freelancer_rating)}</TableCell>
                                 <TableCell className='w-[5%] text-center cursor-pointer' onClick={() => router.push(`/${bid.freelancer_name}`)}>View</TableCell>
-                                <TableCell className='w-[5%] text-center  cursor-pointer'>Read</TableCell>
+                                <TableCell className='w-[5%] text-center  cursor-pointer'><ReadProposal bid={bid}/></TableCell>
                                 <TableCell className='w-[5%] text-center cursor-pointer' title='Accept Bid'>
                                     <CircleCheckBig className='w-[20px] h-[20px] mx-auto ' color='green' onClick={() => acceptBid(bid.bid_id)} />
                                 </TableCell>
