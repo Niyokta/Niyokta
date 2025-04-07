@@ -56,7 +56,7 @@ export function BidTable({ bids }: { bids: MyBidType[] }) {
                 {bids.map((bid,index) => (
                     <TableRow key={bid.bid_id}>
                         <TableCell className="w-[10%] text-center font-medium">{index+1}</TableCell>
-                        <TableCell className="w-[40%] text-left">{bid.project_title}</TableCell>
+                        <TableCell className="w-[40%] text-left">{bid.project_title.slice(0,70)}...</TableCell>
                         <TableCell className="w-[15%] text-center ">₹ {Number(bid.bidding_price).toLocaleString()}</TableCell>
                         <TableCell className="w-[15%] text-center capitalize font-medium" style={{color:bid.status==="pending" ? "#E67E22" : bid.status==="accepted"?"green":"red"}}>{bid.status}</TableCell>
                         <TableCell className="w-[10%]"><UpdateBid bid={bid}/></TableCell>
