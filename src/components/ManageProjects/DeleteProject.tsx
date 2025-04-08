@@ -8,23 +8,26 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { div_color } from '@/resource/theme';
-import { MyBidType } from '@/lib/types/BidType';
-export default function ReadProposal({ bid }: { bid: MyBidType }) {
+import { Trash } from 'lucide-react';
+import { Button } from '../ui/button';
+export default function DeleteProject({ deleteProject,projectId }: { deleteProject: (id:number)=>void ,projectId:number}) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <p>Read</p>
+            <Trash className='mx-auto w-[15px] h-[15px]' color='red'/>
             </DialogTrigger>
             <DialogContent className="w-[700px]" style={{ backgroundColor: div_color }}>
                 <DialogHeader>
-                    <DialogTitle>{`Bid's Proposal`}</DialogTitle>
+                    <DialogTitle>{`Delete Project`}</DialogTitle>
                     <DialogDescription>
                         {`This is the proposal written by the bidder on your project`}
                     </DialogDescription>
                 </DialogHeader>
-                    <div className='h-[400px]  overflow-y-scroll'>
-                        <p className='text-[15px] font-light'>Author : {bid.freelancer_name}</p>
-                        <p className='py-[20px] font-light'>{bid.proposal}</p>
+                    <p className='capitalize py-[20px]'>Do you really want to delete this project</p>
+                    <div className='flex justify-end'>
+                        <Button type='submit' onClick={()=>{
+                            deleteProject(projectId)
+                        }}>Delete</Button>
                     </div>
             </DialogContent>
         </Dialog>
