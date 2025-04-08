@@ -11,8 +11,9 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { CgChevronDoubleLeft, CgChevronDoubleRight } from 'react-icons/cg';
-import { Trash } from 'lucide-react';
+
 import { useToast } from '@/hooks/use-toast';
+import DeleteProject from './DeleteProject';
 export default function ListProject() {
     const {toast}=useToast()
     const projects = useAppSelector(state => state.user.projects)
@@ -24,7 +25,7 @@ export default function ListProject() {
     })
     const lastindex=projects.length
 
-    async function DeleteProject(id:number){
+    async function deleteproject(id:number){
         await fetch('/api/User/RemoveProject',{
             method:'POST',
             body:JSON.stringify({
@@ -72,7 +73,7 @@ export default function ListProject() {
                                 <TableCell className="w-[10%] text-center">{project.bids.length}</TableCell>
                                 <TableCell className="w-[10%] text-center">{`Rs. ${Number(project.min_budget).toLocaleString()}`}</TableCell>
                                 <TableCell className="w-[10%] text-center">{`Rs. ${Number(project.max_budget).toLocaleString()}`}</TableCell>
-                                <TableCell className="w-[5%] text-center cursor-pointer"><Trash className='mx-auto w-[15px] h-[15px]' color='red' onClick={()=>DeleteProject(project.project_id)}/></TableCell>
+                                <TableCell className="w-[5%] text-center cursor-pointer"><DeleteProject deleteProject={deleteproject} projectId={project.project_id}/></TableCell>
                             </TableRow>
                         )
                     })}
