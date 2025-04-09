@@ -18,11 +18,10 @@ const ProjectCard = ({ filter,project_id, title, client_name,category, client_co
   }
   
   return (
-    <div className="p-[20px] max-h-[180px] font-light text-[12px] md:text-[15px] hover:bg-[#f7f7f7] rounded-md border-[1px] " style={{ borderColor:border_color,display:display,backgroundColor:div_color }}>
+    <div className="w-full p-[10px] md:p-[20px] max-h-[180px] font-light text-[12px] md:text-[15px] hover:bg-[#f7f7f7] rounded-md border-[1px] " style={{ borderColor:border_color,display:display,backgroundColor:div_color }}>
       <p className="text-[10px] md:text-[12px]" style={{color:primary_accent_text}}>{`${client_name} ( ${client_country} )`}</p>
       <p className="pt-[5px] font-medium">{title}</p>
       <p className="text-[10px] md:text-[12px] pb-[10px] md:pb-[20px] underline-offset-2 underline">{`Min-Bid Price : ₹ ${min_budget}`}  </p>
-
       
       <span className="flex">
         {

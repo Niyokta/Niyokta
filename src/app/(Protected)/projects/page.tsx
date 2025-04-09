@@ -65,12 +65,12 @@ export default function Home() {
     loading ? (
       <AllProjectsLoader />
     ) :
-      <div className='w-full flex py-[20px] justify-between'>
+      <div className='w-full flex flex-col md:flex-row py-[20px] justify-between'>
         {/* filter  */}
         <ProjectFilter filter={filter} setfilter={setfilter} />
-        <div className='w-[68%]'>
+        <div className='w-full md:w-[68%]'>
           {/* porject list  */}
-          <div className='w-full grid auto-rows-min grid-cols-1 md:grid-cols-1 gap-5'>
+          <div className='w-full grid auto-rows-min grid-cols-1 md:grid-cols-1 gap-5 mt-[20px] md:mt-[0px]'>
             {projects.length === 0 ?
               <div className='w-full flex flex-col items-center justify-center h-[300px]'>
                 <ScrollText className='w-[100px] h-[100px]' />
@@ -87,11 +87,11 @@ export default function Home() {
                 setindex(() => ({ ...index, first: index.first - 8, last: index.last - 8 }));
               }
             }} />
-            <p className='px-[10px] py-[2px] opacity-35 rounded-md font-bold' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>{index.first / 8 === 0 ? 1 : index.first / 8}</p>
+            <p className='px-[10px] py-[2px] opacity-35 rounded-md font-bold' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>{1}</p>
             <p className='px-[10px] py-[2px] rounded-md font-bold' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>{index.last / 8}</p>
             <p className='px-[10px] py-[2px] opacity-35 rounded-md font-bold' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>{Math.ceil(totalProjects.current / 8) > 0 ? Math.ceil(totalProjects.current / 8) : 1}</p>
             <CgChevronDoubleRight className='w-[20px] h-[20px] cursor-pointer' onClick={() => {
-              if (index.first < totalProjects.current) {
+              if (index.first + 8 < totalProjects.current) {
                 setindex(() => ({ ...index, first: index.first + 8, last: index.last + 8 }));
               }
             }} />

@@ -42,7 +42,7 @@ export default function ListProject() {
         setfinalProjects(finalProjects.filter(project=>project.project_id!=id))
     }
     return (
-        projects.length > 0 ? <div className='w-full h-[500px] py-[20px] px-[20px] rounded-md mt-[10px]' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>
+        projects.length > 0 ? <div className='w-full h-[500px] py-[20px] px-[10px] md:px-[20px] rounded-md mt-[10px]' style={{ backgroundColor: div_color, boxShadow: box_shadow }}>
             <Table>
                 <TableHeader>
                     <TableRow>
