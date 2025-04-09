@@ -32,11 +32,10 @@ export default function Navbar() {
             return;
         }
     }
-    
     return (
             <div className="w-[100%] h-[60px] rounded-md flex justify-between px-[20px] items-center mt-[20px]" style={{ boxShadow: box_shadow,userSelect:'none',backgroundColor:navbar_background,color:navbar_text_color }}>
                 <ul>
-                    <li className="font-bold md:text-[25px]" style={{color:navbar_logo_color}}>Niyokta</li>
+                    <li className="font-bold md:text-[25px] cursor-pointer" style={{color:navbar_logo_color}} onClick={()=>router.push("/dashboard")}>Niyokta</li>
                 </ul>
                 <ul className="flex w-[70%] md:w-[20%] justify-around text-[12px] md:text-[17px] items-center font-medium">
                     <li onClick={() => router.push('/projects')} className="cursor-pointer underline underline-offset-2">Projects</li>

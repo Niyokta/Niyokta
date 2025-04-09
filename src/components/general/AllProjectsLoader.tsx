@@ -3,15 +3,14 @@ import { Skeleton } from "../ui/skeleton";
 import { loader_background } from "@/resource/theme";
 export default function AllProjectsLoader(){
     return(
-        <div className='grid grid-flow-row grid-col-1 md:grid-cols-2 gap-10 mt-[100px]'>
-          <Skeleton className='h-[150px]' style={{backgroundColor:loader_background}}/>
-          <Skeleton className='h-[150px]' style={{backgroundColor:loader_background}}/>
-          <Skeleton className='h-[150px]' style={{backgroundColor:loader_background}}/>
-          <Skeleton className='h-[150px]' style={{backgroundColor:loader_background}}/>
-          <Skeleton className='h-[150px]' style={{backgroundColor:loader_background}}/>
-          <Skeleton className='h-[150px]' style={{backgroundColor:loader_background}}/>
-          <Skeleton className='h-[150px]' style={{backgroundColor:loader_background}}/>
-          <Skeleton className='h-[150px]' style={{backgroundColor:loader_background}}/>
-        </div>
+      <div className="w-full flex gap-3">
+      <Skeleton className="w-[30%] h-screen mt-[20px]" style={{backgroundColor:loader_background}}/>
+      <div className=" flex-1 flex-col mt-[20px]">
+        <Skeleton className="w-full h-[200px] mb-[20px]" style={{backgroundColor:loader_background}}/>
+        <Skeleton className="w-full h-[200px] mb-[20px]" style={{backgroundColor:loader_background}}/>
+        <Skeleton className="w-full h-[200px] mb-[20px]" style={{backgroundColor:loader_background}}/>
+        <Skeleton className="w-full h-[200px] mb-[20px]" style={{backgroundColor:loader_background}}/>
+      </div>
+    </div>
     )
 }

@@ -5,14 +5,17 @@ import NoActiveProject from '@/components/ManageProjects/NoActiveProject'
 import SelectProject from '@/components/ManageProjects/SelectProject'
 import { Button } from '@/components/ui/button'
 import { box_shadow, div_color } from '@/resource/theme'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export default function ManageProjects() {
   const [activeProjectId, setactiveProjectId] = React.useState<number | null>(null)
+  const router=useRouter()
   return (
     <div className='w-full pt-[30px]'>
-      <div className='w-full flex justify-end'>
+      <div className='w-full flex justify-end gap-2'>
         <Button className='font-bold'>Create New Project</Button>
+        <Button className='font-bold' onClick={()=>{router.push("/manage-projects/ongoing")}}>Manage Ongoing Projects</Button>
       </div>
       <p className='text-[15px] font-medium uppercase px-[10px]'>Your projects</p>
       <ListProject/>

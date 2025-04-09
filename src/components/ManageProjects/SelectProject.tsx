@@ -29,7 +29,7 @@ export default function SelectProject({setactiveProjectId}:{setactiveProjectId:R
                     <SelectValue placeholder="Select a Project To Monitor Bids" />
                 </SelectTrigger>
                 <SelectContent style={{backgroundColor:div_color}}>
-                    <SelectGroup>
+                    <SelectGroup className=''>
                         {
                             filteredProjects.map((project,index)=>{
                                 return(

@@ -8,7 +8,7 @@ export default function profile() {
     return (
         <>
             <PersonalInfo />
-            <Projects />
+            {/* <Projects /> */}
             <Education />
             <Experience />
         </>
