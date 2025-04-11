@@ -5,7 +5,7 @@ export async function POST(request: Request) {
 
     const reqBody = await request.json();
     const { projectId } = reqBody
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_ROUTE}/project/getProject`, {
+    const response = await fetch(`http://3.6.34.255:3000/api/v1/project/getProject`, {
       method: "POST",
       credentials: "include",
       headers: {

@@ -67,3 +67,14 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #2D3039;
+  border-radius: 10px;
+}
