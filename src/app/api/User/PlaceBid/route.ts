@@ -29,7 +29,7 @@ export async function POST(request: Request) {
             client_name: client_name,
             freelancer_rating: freelancer_rating
         }
-        const response = await fetch('http://3.6.34.255:3000/api/v1/bid/placeBid', {
+        const response = await fetch('http://13.233.248.208:3000/api/v1/bid/placeBid', {
             method: 'POST',
             headers: {
                 'authorization': accessToken,

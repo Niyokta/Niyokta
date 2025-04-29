@@ -3,7 +3,7 @@ export async function POST(request:Request){
     try{
         const req=await request.json();
         const {username}=req;
-        const user=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_ROUTE}/user/getUserByUsername`,{
+        const user=await fetch(`http://13.233.248.208:3000/api/v1/user/getUserByUsername`,{
             method:"POST",
             credentials:"include",
             headers:{

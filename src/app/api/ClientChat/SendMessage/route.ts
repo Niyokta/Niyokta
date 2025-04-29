@@ -6,7 +6,7 @@ export async function POST(request:Request) {
 
     const requestBody=await request.json();
     const {senderId,roomId,text}=requestBody
-    const response = await fetch(`http://3.6.34.255:3001/api/v1/message/addMessageToRoom`, {
+    const response = await fetch(`http://13.233.248.208:3001/api/v1/message/addMessageToRoom`, {
       method: 'POST',
       credentials: 'include',
       headers: {

@@ -5,7 +5,7 @@ export async function POST(request: Request) {
 
     const reqBody = await request.json();
     const { projectId } = reqBody
-    const response = await fetch(`http://3.6.34.255:3000/api/v1/project/getProject`, {
+    const response = await fetch(`http://13.233.248.208:3000/api/v1/project/getProject`, {
       method: "POST",
       credentials: "include",
       headers: {
