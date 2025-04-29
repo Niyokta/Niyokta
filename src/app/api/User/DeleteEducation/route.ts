@@ -9,7 +9,7 @@ export async function POST(request:Request){
         if(!accessToken){
             return Response.json({status:"400",message:"You are not Logged In"})
         }
-        const response=await fetch('http://3.6.34.255:3000/api/v1/user/deleteEducation',{
+        const response=await fetch('http://13.233.248.208:3000/api/v1/user/deleteEducation',{
             method:'POST',
             headers:{
                 'authorization':accessToken,

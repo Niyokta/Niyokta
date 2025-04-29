@@ -5,7 +5,7 @@ export async function POST(request: Request) {
         const requestbody = await request.json();
         const { Username, Email, Password,phone,country,working_hours,birth_date,linkedin,github,x } = requestbody
         
-        const response=await fetch('http://3.6.34.255:3000/api/v1/auth/create-account',{
+        const response=await fetch('http://13.233.248.208:3000/api/v1/auth/create-account',{
             method:'POST',
             credentials:'include',
             headers:{

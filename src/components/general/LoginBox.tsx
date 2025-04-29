@@ -44,13 +44,13 @@ export default function LoginBox() {
                 else {
                     setloading(false);
                     toast({
-                        title:"AWS Account Got Suspended 😅. Fixing it.."
+                        title:res.message
                     })
                 }
             })
             .catch((err) =>{
                 setloading(false)
-                toast({title:"AWS Account Got Suspended 😅. Fixing it.."})
+                toast({title:err.message})
             })
     }
     const handlekeydown=(e:React.KeyboardEvent<HTMLInputElement>)=>{

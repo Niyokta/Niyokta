@@ -7,7 +7,7 @@ export async function GET(){
             status:"400",
             message:"You are not Logged in"
         })
-        const response=await fetch(`${process.env.NEXT_PUBLIC_BACKEND_ROUTE}/user/getAllUsers`,{
+        const response=await fetch(`http://13.233.248.208:3000/api/v1/user/getAllUsers`,{
             method:'GET',
             credentials:"include",
             headers:{

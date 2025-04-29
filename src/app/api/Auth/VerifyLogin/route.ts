@@ -9,7 +9,7 @@ export async function GET() {
         message: "Tokens not found"
     })
     try {
-        const response = await fetch('http://3.6.34.255:3000/api/v1/auth/verifyToken', {
+        const response = await fetch('http://13.233.248.208:3000/api/v1/auth/verifyToken', {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -18,7 +18,7 @@ export async function GET() {
         })
         const res = await response.json();
         if (res.status == "200") return Response.json({ status: res.status, message: res.message })
-        const response2 = await fetch('http://3.6.34.255:3000/api/v1/auth/refreshToken', {
+        const response2 = await fetch('http://13.233.248.208:3000/api/v1/auth/refreshToken', {
             method: 'GET',
             credentials: 'include',
             headers:{

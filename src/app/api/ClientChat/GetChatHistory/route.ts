@@ -4,7 +4,7 @@ export async function POST(request:Request) {
 
     const requestBody=await request.json();
     const {roomId}=requestBody
-    const response = await fetch(`http://3.6.34.255:3001/api/v1/message/getChatHistory?roomId=${roomId}`, {
+    const response = await fetch(`http://13.233.248.208:3001/api/v1/message/getChatHistory?roomId=${roomId}`, {
       method: 'GET',
       credentials: 'include',
       headers: {
