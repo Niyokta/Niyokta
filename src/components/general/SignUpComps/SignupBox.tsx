@@ -60,9 +60,9 @@ export default function SignupBox() {
             .then((res) => res.json())
             .then((res) => {
                 if (res.status === "200") router.replace('/auth/signin');
-                else {toast({title:res.message});setloading(false);}
+                else {toast({title:"AWS Account Got Suspended 😅. Fixing it.."});setloading(false);}
             })
-            .catch(() => setloading(false))
+            .catch(() => {toast({title:"AWS Account Got Suspended 😅. Fixing it.."});setloading(false)})
     }
     const handlekeydown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') handlesignup();
