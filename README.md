@@ -1,5 +1,28 @@
 <h1>Description</h1>
-Niyokta is a freelance platform where you can post and bid for different projects and manage your projects or bids along with analytics.
+Niyokta is a freelance platform where you can find and post freelance work and jobs. It provides you with all the features for finding a correct job for you.
+
+_Some features are listed below :_
+
+<ol>
+  <li>
+    Post projects along with the specific skill set requirements and the correct category tags.
+  </li>
+  <li>
+    Manage multiple bids on your projects by rejecting or accepting any bid.
+  </li>
+  <li>
+    Bid on projects hosted by the fellow members and withdraw or update the bid anytime before it gets accepted or rejected by the client.
+  </li>
+  <li>
+    Instant conversation startup between the client and the freelancer on acceptance of the bid from the client.
+  </li>
+  <li>
+    Monitor your project's and bid's performance through bar graph, line chart, pie chart and other interactive components both yearly and monthly.
+  </li>
+  <li>
+    Monitor your earning and expenditure for the current financial year.
+  </li>
+</ol>
 
 <h1>Architecture</h1>
 Niyokta follows microservice architecture, though there are not many microservices but the responsibilities have been assigned to different services. All the services are listed below.<br/>
